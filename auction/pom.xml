@@ -71,6 +71,15 @@
         </dependency>
 
         <!--
+             Misc dependencies
+        -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>1.6</version>
+        </dependency>
+
+        <!--
              Jetty Embedding Dependencies
          -->
         <dependency>

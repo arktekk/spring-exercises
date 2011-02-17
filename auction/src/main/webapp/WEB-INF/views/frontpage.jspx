@@ -4,6 +4,20 @@
           xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout" xmlns:c="http://java.sun.com/jsp/jstl/core">
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="Main Auction Page">
-        <h1>Hello</h1>
+        <h1>Running Auctions</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Minimum Price</th>
+                <th>Description</th>
+            </tr>
+            <c:forEach var="auction" items="${auctions}">
+                <tr>
+                    <td>${auction.id}</td>
+                    <td>${auction.minimumPrice}</td>
+                    <td>${auction.description}</td>
+                </tr>
+            </c:forEach>
+        </table>
     </layout:page>
 </jsp:root>

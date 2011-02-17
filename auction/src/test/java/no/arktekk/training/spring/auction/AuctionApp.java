@@ -10,10 +10,10 @@ import java.io.File;
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
-public class Auction {
+public class AuctionApp {
 
     public static void main(String[] args) throws Exception {
-        new Auction().start();
+        new AuctionApp().start();
     }
 
     public void start() throws Exception {

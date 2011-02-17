@@ -13,12 +13,10 @@ import static org.junit.Assert.assertEquals;
 public class DatabaseConfigTest {
 
     @Test
-    public void whenUsingTestDataSourceThenInmemoryDatabaseAreCreatedAndPopulatedWithTestDataOnce() {
+    public void whenUsingTestDataSourceThenInmemoryDatabaseAreCreatedAndPopulatedWithTestData() {
         DatabaseConfig config = new DatabaseConfig();
         DataSource dataSource = config.dataSource();
         SimpleJdbcTemplate template = new SimpleJdbcTemplate(dataSource);
-        assertEquals("Expected one Auction after populating testdata", 1, template.queryForInt("select count(*) from Auction"));
-        config.dataSource();
-        assertEquals("Expected one Auction after populating testdata", 1, template.queryForInt("select count(*) from Auction"));
+        assertEquals("Expected one Auction after populating testdata", 3, template.queryForInt("select count(*) from Auction"));
     }
 }
