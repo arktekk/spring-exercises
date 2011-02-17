@@ -1,0 +1,29 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <jsp:output
+            doctype-root-element="html"
+            doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+            doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+    <jsp:directive.attribute name="title" type="java.lang.String" required="false"/>
+
+    <html>
+        <head>
+            <title>
+                <c:out value="${title}"/>
+            </title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        </head>
+
+        <body id="auction">
+            <div id="page">
+                <div id="content">
+                    <div id="main_content">
+                        <jsp:doBody/>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+</jsp:root>
