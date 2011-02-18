@@ -2,11 +2,11 @@
           xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <!--@elvariable id="auction" type="no.arktekk.training.spring.domain.Auction"-->
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="Main Auction Page">
         <h1>Auctions Details</h1>
         <table>
-
             <tr>
                 <td>${auction.id}</td>
                 <td>${auction.minimumPrice}</td>
