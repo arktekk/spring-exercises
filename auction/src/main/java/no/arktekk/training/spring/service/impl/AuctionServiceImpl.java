@@ -26,4 +26,9 @@ public class AuctionServiceImpl implements AuctionService {
     public List<Auction> allRunningAuctions() {
         return auctionRepository.listAllRunningAuctions();
     }
+
+    @Transactional(readOnly = true)
+    public Auction findById(Double auctionId) {
+        return auctionRepository.findById(auctionId);
+    }
 }

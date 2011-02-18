@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface AuctionService {
     List<Auction> allRunningAuctions();
+    Auction findById(Double auctionId);
 }

@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface AuctionRepository {
     List<Auction> listAllRunningAuctions();
+
+    Auction findById(Double auctionId);
 }
