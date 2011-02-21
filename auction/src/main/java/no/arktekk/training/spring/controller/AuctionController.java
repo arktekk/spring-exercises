@@ -35,7 +35,6 @@ public class AuctionController {
     @RequestMapping(value = "/auctions/new", method = GET)
     @View(value = "auction/new", modelAttribute = "auction")
     public AuctionForm prepareNewAuctionForm() {
-        System.out.println("balle");
         return new AuctionForm();
     }
 
