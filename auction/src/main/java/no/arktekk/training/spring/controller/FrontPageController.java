@@ -1,10 +1,13 @@
 package no.arktekk.training.spring.controller;
 
+import no.arktekk.training.spring.domain.Auction;
 import no.arktekk.training.spring.service.AuctionService;
+import no.arktekk.training.spring.util.View;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
@@ -19,9 +22,8 @@ public class FrontPageController {
     }
 
     @RequestMapping("/")
-    public String auctionList(ModelMap model) {
-        model.addAttribute("auctions", auctionService.allRunningAuctions());
-        return "frontpage";
+    @View(value = "frontpage", modelAttribute = "auctions")
+    public List<Auction> auctionList() {
+        return auctionService.allRunningAuctions();
     }
-
 }

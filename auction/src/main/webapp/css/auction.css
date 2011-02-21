@@ -2,8 +2,8 @@ body {
     color: #666666;
 }
 
-.header {
-    background: url("/img/body.jpg") repeat-y scroll left top transparent;
+#page-header {
+    background: url("/img/body.png") repeat-y scroll left top transparent;
     height: 150px;
     margin: 0 auto;
     padding: 0 5px 15px;
@@ -55,7 +55,7 @@ body {
     z-index: 10;
 }
 
-.header img {
+#page-header img {
     width: 105px;
     height: 80px;
     border: none;

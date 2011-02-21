@@ -3,25 +3,29 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	                        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="no.arktekk.training.spring.controller"/>
-    <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/img/**" location="/img/"/>
-    <mvc:resources mapping="/img/**" location="/img/"/>
-    <mvc:resources mapping="/favicon.ico" location="/img/favicon.ico"/>
+    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>
+    <mvc:resources mapping="/img/**" location="/img/" cache-period="31556926"/>
+    <mvc:resources mapping="/img/**" location="/img/" cache-period="31556926"/>
+    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>
+    <mvc:resources mapping="/favicon.ico" location="/img/favicon.ico" cache-period="31556926"/>
 
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-        <property name="order" value="0"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/views/"
+          p:suffix=".jspx"/>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"
+          p:order="0"/>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="customModelAndViewResolver">
+            <bean class="no.arktekk.training.spring.util.AnnotationModelAndViewResolver"/>
+        </property>
     </bean>
-
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jspx"/>
-    </bean>
-
 </beans>

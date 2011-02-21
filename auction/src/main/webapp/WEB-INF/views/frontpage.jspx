@@ -5,17 +5,17 @@
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="Main Auction Page">
         <h1>Running Auctions</h1>
-        <table>
+        <table class="tablesorter">
+            <thead>
             <tr>
-                <th>Id</th>
                 <th>Minimum Price</th>
                 <th>Description</th>
             </tr>
+            </thead>
             <c:forEach var="auction" items="${auctions}">
                 <tr>
-                    <td>${auction.id}</td>
                     <td>${auction.minimumPrice}</td>
-                    <td>${auction.description}</td>
+                    <td><a href="/auctions/${auction.id}">${auction.description}</a></td>
                 </tr>
             </c:forEach>
         </table>
