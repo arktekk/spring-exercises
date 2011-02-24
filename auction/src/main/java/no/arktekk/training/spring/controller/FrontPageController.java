@@ -1,12 +1,14 @@
 package no.arktekk.training.spring.controller;
 
 import no.arktekk.training.spring.domain.Auction;
+import no.arktekk.training.spring.form.AuctionForm;
 import no.arktekk.training.spring.service.AuctionService;
 import no.arktekk.training.spring.util.View;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +25,12 @@ public class FrontPageController {
 
     @RequestMapping("/")
     @View(value = "frontpage", modelAttribute = "auctions")
-    public List<Auction> auctionList() {
-        return auctionService.allRunningAuctions();
+    public List<AuctionForm> auctionList() {
+        List<AuctionForm> forms = new ArrayList<AuctionForm>();
+        for (Auction auction : auctionService.allRunningAuctions()) {
+            forms.add(new AuctionForm().apply(auction));
+        }
+        return forms;
+
     }
 }

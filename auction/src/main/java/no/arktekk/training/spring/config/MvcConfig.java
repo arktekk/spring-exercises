@@ -1,11 +1,15 @@
 package no.arktekk.training.spring.config;
 
 import no.arktekk.training.spring.util.AnnotationModelAndViewResolver;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
 import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -61,5 +65,26 @@ public class MvcConfig {
         AnnotationMethodHandlerAdapter annotationMethodHandlerAdapter = new AnnotationMethodHandlerAdapter();
         annotationMethodHandlerAdapter.setCustomModelAndViewResolver(new AnnotationModelAndViewResolver());
         return annotationMethodHandlerAdapter;
+    }
+
+    /**
+     * Registeres the file labels.properties, labels_nb_NO.properties ...
+     * as a source for labels to be used in the jspx files.
+     * Uses standards java resource bundle stragegies
+     */
+    @Bean
+    public MessageSource messageSource(){
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("labels");
+        return messageSource;
+    }
+
+    /**
+     * Selects the strategy for resolving locale in the webapp. This particular strategy
+     * tries to find the accept-language header from the browser.
+     */
+    @Bean
+    public LocaleResolver localeResolver(){
+         return new AcceptHeaderLocaleResolver();
     }
 }

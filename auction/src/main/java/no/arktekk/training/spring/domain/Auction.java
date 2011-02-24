@@ -2,8 +2,6 @@ package no.arktekk.training.spring.domain;
 
 import org.joda.time.DateTime;
 
-import java.util.List;
-
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
@@ -11,34 +9,34 @@ public class Auction {
     private final double id;
     private final double minimumPrice;
     private final String description;
-    private final DateTime start;
+    private final DateTime starts;
     private final DateTime expires;
 
-    public Auction(double id, double minimumPrice, String description, DateTime start, DateTime expires) {
+    public Auction(double id, double minimumPrice, String description, DateTime starts, DateTime expires) {
         this.id = id;
         this.minimumPrice = minimumPrice;
         this.description = description;
-        this.start = start;
+        this.starts = starts;
         this.expires = expires;
     }
 
-    public double getId() {
+    public double id() {
         return id;
     }
 
-    public double getMinimumPrice() {
+    public double minimumPrice() {
         return minimumPrice;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
-    public DateTime getStart() {
-        return start;
+    public DateTime starts() {
+        return starts;
     }
 
-    public DateTime getExpires() {
+    public DateTime expires() {
         return expires;
     }
 
@@ -66,7 +64,7 @@ public class Auction {
                 "id=" + id +
                 ", minimumPrice=" + minimumPrice +
                 ", description='" + description + '\'' +
-                ", start=" + start +
+                ", start=" + starts +
                 ", expires=" + expires +
                 '}';
     }

@@ -8,14 +8,21 @@
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="Main Auction Page">
         <h1>Auctions Details</h1>
-        <table>
-            <form:form commandName="auction"  action="/auctions/new">
-                <f:input name="minimumPrice"/>
-                 <input type="submit"/>
 
+        <form:form commandName="auction" action="/auctions/new">
+            <table>
+                <tr>
+                    <td><f:input name="minimumPrice" label="auction.new.minimumPrice"/></td>
+                </tr>
+                <tr>
+                    <td><f:input name="description" label="auction.new.description"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit"/></td>
+                </tr>
+            </table>
+        </form:form>
 
-            </form:form>
-        </table>
 
     </layout:page>
 </jsp:root>
