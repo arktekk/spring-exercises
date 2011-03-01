@@ -2,6 +2,7 @@ package no.arktekk.training.spring.form;
 
 import no.arktekk.training.spring.domain.Auction;
 import org.joda.time.DateTime;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
@@ -10,7 +11,9 @@ public class AuctionForm implements Form<Auction> {
     private Double id;
     private Double minimumPrice;
     private String description;
+    @DateTimeFormat(pattern = "dd.mm.yyyy")
     private DateTime starts;
+    @DateTimeFormat(pattern = "dd.mm.yyyy")
     private DateTime expires;
 
 
