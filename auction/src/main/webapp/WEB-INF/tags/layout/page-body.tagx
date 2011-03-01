@@ -1,0 +1,14 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <jsp:directive.attribute name="title" required="false"/>
+    <div id="page-body-content">
+        <c:choose>
+            <c:when test="${title}">
+
+            </c:when>
+        </c:choose>
+                <h1>${title}</h1>
+
+        <jsp:doBody/>
+    </div>
+</jsp:root>

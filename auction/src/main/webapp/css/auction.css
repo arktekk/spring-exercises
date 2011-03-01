@@ -2,14 +2,17 @@ body {
     color: #666666;
 }
 
-#page-header {
-    background: url("/img/body.png") repeat-y scroll left top transparent;
-    height: 150px;
-    margin: 0 auto;
-    padding: 0 5px 15px;
-    position: relative;
-    width: 1006px;
-    z-index: 2;
+a {
+    color: #666666;
+}
+
+#container {
+    width: 90%;
+    margin: 10px auto;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    line-height: 130%;
 }
 
 #page-top {
@@ -21,6 +24,24 @@ body {
     position: static;
     width: 1016px;
     z-index: 10;
+}
+
+#page-header {
+    background: url("/img/body.png") repeat-y scroll left top transparent;
+    height: 150px;
+    margin: 0 auto;
+    padding: 0 5px 15px;
+    position: relative;
+    width: 1006px;
+    z-index: 2;
+}
+
+#page-header img {
+    width: 105px;
+    height: 80px;
+    border: none;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 #page-body {
@@ -43,6 +64,8 @@ body {
     background: url("/img/page-bottom.png") repeat-x scroll center bottom #5F5E55;
     padding-right: 10px;
     text-align: right;
+    clear: both;
+
 }
 
 #page-end {
@@ -55,14 +78,35 @@ body {
     z-index: 10;
 }
 
-#page-header img {
-    width: 105px;
-    height: 80px;
-    border: none;
-    padding-top: 10px;
-    padding-left: 10px;
+.label {
+    padding-right: 10px;
 }
 
-.label {
-    padding-right:10px;
+#page-menu {
+    float: left;
+    padding-right: 100px;
 }
+
+#page-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+#page-menu img {
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border: none;
+}
+
+#page-menu a {
+    text-decoration: none;
+}
+
+#page-menu a :hover {
+    text-decoration: underline;
+}
+
+

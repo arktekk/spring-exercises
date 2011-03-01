@@ -5,14 +5,16 @@
     <!--@elvariable id="auction" type="no.arktekk.training.spring.form.AuctionForm"-->
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="Main Auction Page">
-        <h1>Auctions Details</h1>
-        <table>
-            <tr>
-                <td>${auction.id}</td>
-                <td>${auction.minimumPrice}</td>
-                <td>${auction.description}</td>
-            </tr>
-        </table>
-
+        <layout:menu/>
+        <layout:page-body title="Auction Details">
+            <table>
+                <tr>
+                    <td>${auction.id}</td>
+                    <td>${auction.minimumPrice}</td>
+                    <td>${auction.starts}</td>
+                    <td>${auction.description}</td>
+                </tr>
+            </table>
+        </layout:page-body>
     </layout:page>
 </jsp:root>
