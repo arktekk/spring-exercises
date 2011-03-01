@@ -13,6 +13,7 @@ import java.lang.annotation.*;
 @Mapping
 public @interface View {
     String value();
+
     String modelAttribute() default "";
 
 }

@@ -6,6 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.format.annotation.NumberFormat.Style.CURRENCY;
 
@@ -14,9 +16,11 @@ import static org.springframework.format.annotation.NumberFormat.Style.CURRENCY;
  */
 public class AuctionForm implements Form<Auction> {
 
-    @NotNull private Double id;
+    private Double id;
+
     @NumberFormat(style = CURRENCY)
     @NotNull private Double minimumPrice;
+
     private String description;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
@@ -25,6 +29,7 @@ public class AuctionForm implements Form<Auction> {
     @DateTimeFormat(pattern = DATE_PATTERN)
     @NotNull private DateTime expires;
 
+    List<ItemForm> items = new ArrayList<ItemForm>();
 
     @Override
     public Auction to() {

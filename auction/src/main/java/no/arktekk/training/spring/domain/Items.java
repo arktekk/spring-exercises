@@ -10,7 +10,8 @@ public class Items implements Iterable<Item> {
     Auction auction;
     List<Item> items;
 
-    private Items(){}
+    private Items() {
+    }
 
     public Iterator<Item> iterator() {
         return items.iterator();

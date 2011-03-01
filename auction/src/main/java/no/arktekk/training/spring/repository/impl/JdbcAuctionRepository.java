@@ -1,7 +1,7 @@
 package no.arktekk.training.spring.repository.impl;
 
 import no.arktekk.training.spring.domain.Auction;
-import no.arktekk.training.spring.mappers.AuctionMapper;
+import no.arktekk.training.spring.mapper.AuctionMapper;
 import no.arktekk.training.spring.repository.AuctionRepository;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;

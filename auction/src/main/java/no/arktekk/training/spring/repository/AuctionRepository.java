@@ -1,11 +1,7 @@
 package no.arktekk.training.spring.repository;
 
 import no.arktekk.training.spring.domain.Auction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
-import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 

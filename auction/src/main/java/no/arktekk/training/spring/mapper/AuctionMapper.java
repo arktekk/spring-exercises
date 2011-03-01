@@ -1,4 +1,4 @@
-package no.arktekk.training.spring.mappers;
+package no.arktekk.training.spring.mapper;
 
 import no.arktekk.training.spring.domain.Auction;
 import org.joda.time.DateTime;
