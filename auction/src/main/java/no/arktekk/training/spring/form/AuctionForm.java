@@ -3,18 +3,27 @@ package no.arktekk.training.spring.form;
 import no.arktekk.training.spring.domain.Auction;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.NotNull;
+
+import static org.springframework.format.annotation.NumberFormat.Style.CURRENCY;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class AuctionForm implements Form<Auction> {
-    private Double id;
-    private Double minimumPrice;
+
+    @NotNull private Double id;
+    @NumberFormat(style = CURRENCY)
+    @NotNull private Double minimumPrice;
     private String description;
-    @DateTimeFormat(pattern = "dd.mm.yyyy")
-    private DateTime starts;
-    @DateTimeFormat(pattern = "dd.mm.yyyy")
-    private DateTime expires;
+
+    @DateTimeFormat(pattern = DATE_PATTERN)
+    @NotNull private DateTime starts;
+
+    @DateTimeFormat(pattern = DATE_PATTERN)
+    @NotNull private DateTime expires;
 
 
     @Override

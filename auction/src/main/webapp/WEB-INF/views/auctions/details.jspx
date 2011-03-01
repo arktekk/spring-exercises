@@ -1,7 +1,9 @@
 <jsp:root version="2.0"
           xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page"
-          xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout">
+          xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+            xmlns:joda="http://www.joda.org/joda/time/tags">
     <!--@elvariable id="auction" type="no.arktekk.training.spring.form.AuctionForm"-->
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="Main Auction Page">
@@ -10,8 +12,8 @@
             <table>
                 <tr>
                     <td>${auction.id}</td>
-                    <td>${auction.minimumPrice}</td>
-                    <td>${auction.starts}</td>
+                    <td><fmt:formatNumber currencyCode="NOK" type="Currency" value="${auction.minimumPrice}"/></td>
+                    <td><joda:format value="${auction.starts}" pattern="dd.MM.yyyy hh:mm"/></td>
                     <td>${auction.description}</td>
                 </tr>
             </table>
