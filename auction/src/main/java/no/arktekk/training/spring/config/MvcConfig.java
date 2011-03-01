@@ -88,10 +88,4 @@ public class MvcConfig {
     public void handlerAdapter(AnnotationMethodHandlerAdapter adapter) {
         adapter.setCustomModelAndViewResolver(new AnnotationModelAndViewResolver());
     }
-
-    public void registerStaticPaths(ResourceHttpRequestHandler handler){
-
-        handler.
-
-    }
 }
