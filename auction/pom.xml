@@ -5,12 +5,12 @@
     <artifactId>auction</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>action Maven Webapp</name>
+    <name>Auction :: ${project.version}}</name>
     <url>http://github.com/arktekk</url>
+
     <properties>
         <spring.version>3.0.5.RELEASE</spring.version>
         <jetty.version>7.3.0.v20110203</jetty.version>
-        <!--jetty.version>8.0.0.M2</jetty.version-->
         <jsp.version>2.1.v20100127</jsp.version>
     </properties>
 
@@ -112,6 +112,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
