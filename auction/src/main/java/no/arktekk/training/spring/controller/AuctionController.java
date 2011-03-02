@@ -1,6 +1,7 @@
 package no.arktekk.training.spring.controller;
 
 import no.arktekk.training.spring.form.AuctionForm;
+import no.arktekk.training.spring.form.Transformations;
 import no.arktekk.training.spring.service.AuctionService;
 import no.arktekk.training.spring.util.View;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+import static no.arktekk.training.spring.form.Transformations.asAuctionForm;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -30,7 +32,7 @@ public class AuctionController {
     @RequestMapping("/auctions/{auctionId}")
     @View(value = "auctions/details", modelAttribute = "auction")
     public AuctionForm showDetails(@PathVariable Double auctionId) {
-        return new AuctionForm().apply(auctionService.findById(auctionId));
+        return asAuctionForm.apply(auctionService.findById(auctionId));
 
     }
 

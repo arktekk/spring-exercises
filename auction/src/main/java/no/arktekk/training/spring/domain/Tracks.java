@@ -12,4 +12,8 @@ public class Tracks implements Iterable<Track> {
     public Iterator<Track> iterator() {
         return tracks.iterator();
     }
+
+    public void add(Track track) {
+        tracks.add(track);
+    }
 }

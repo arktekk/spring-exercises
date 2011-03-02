@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 
+import static no.arktekk.training.spring.form.Transformations.asAuctionForm;
+
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
@@ -28,7 +30,7 @@ public class FrontPageController {
     public List<AuctionForm> auctionList() {
         List<AuctionForm> forms = new ArrayList<AuctionForm>();
         for (Auction auction : auctionService.allRunningAuctions()) {
-            forms.add(new AuctionForm().apply(auction));
+            forms.add(asAuctionForm.apply(auction));
         }
         return forms;
 

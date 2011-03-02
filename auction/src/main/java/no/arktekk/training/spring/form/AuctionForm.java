@@ -16,7 +16,7 @@ import static org.springframework.format.annotation.NumberFormat.Style.CURRENCY;
  */
 public class AuctionForm implements Form<Auction> {
 
-    private Double id;
+    @NotNull private Double id;
 
     @NumberFormat(style = CURRENCY)
     @NotNull private Double minimumPrice;
@@ -29,34 +29,8 @@ public class AuctionForm implements Form<Auction> {
     @DateTimeFormat(pattern = DATE_PATTERN)
     @NotNull private DateTime expires;
 
-    List<ItemForm> items = new ArrayList<ItemForm>();
+    private List<AlbumForm> albums = new ArrayList<AlbumForm>();
 
-    @Override
-    public Auction to() {
-        return new Auction(id, minimumPrice, description, starts, expires);
-    }
-
-    @Override
-    public AuctionForm apply(Auction domainObject) {
-        id = domainObject.id();
-        minimumPrice = domainObject.minimumPrice();
-        description = domainObject.description();
-        starts = domainObject.starts();
-        expires = domainObject.expires();
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-        return "AuctionForm{" +
-                "id=" + id +
-                ", minimumPrice=" + minimumPrice +
-                ", description='" + description + '\'' +
-                ", starts=" + starts +
-                ", expires=" + expires +
-                '}';
-    }
 
     /**
      * *********************************************************************
@@ -101,5 +75,13 @@ public class AuctionForm implements Form<Auction> {
 
     public void setExpires(DateTime expires) {
         this.expires = expires;
+    }
+
+    public List<AlbumForm> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<AlbumForm> albums) {
+        this.albums = albums;
     }
 }

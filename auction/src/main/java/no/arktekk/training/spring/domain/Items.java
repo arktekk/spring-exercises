@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
-public class Items implements Iterable<Item> {
+public class Items implements Iterable<Album> {
     Auction auction;
-    List<Item> items;
+    List<Album> albums;
 
     private Items() {
     }
 
-    public Iterator<Item> iterator() {
-        return items.iterator();
+    public Iterator<Album> iterator() {
+        return albums.iterator();
     }
 }
