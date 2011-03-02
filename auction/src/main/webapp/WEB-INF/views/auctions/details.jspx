@@ -6,9 +6,9 @@
             xmlns:joda="http://www.joda.org/joda/time/tags">
     <!--@elvariable id="auction" type="no.arktekk.training.spring.form.AuctionForm"-->
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
-    <layout:page title="Main Auction Page">
+    <layout:page title="auction.details.title">
         <layout:menu/>
-        <layout:page-body title="Auction Details">
+        <layout:page-body title="auction.details.title">
             <table>
                 <tr>
                     <td>${auction.id}</td>

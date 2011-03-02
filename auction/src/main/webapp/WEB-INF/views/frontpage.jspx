@@ -3,21 +3,21 @@
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout"
           xmlns:c="http://java.sun.com/jsp/jstl/core"
-          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:s="http://www.springframework.org/tags">
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
-    <layout:page title="Main Auction Page">
+    <layout:page title="index.title">
         <layout:menu>
             <ul>
                 <li><a href="/auctions/new"><img src="/img/icons/plus.png" alt="Ny auksjon"/>Ny auksjon</a></li>
                 <li><a href="/auctions/new"><img src="/img/icons/plus.png" alt="Ny auksjon"/>Ny auksjon</a></li>
             </ul>
         </layout:menu>
-        <layout:page-body title="Running Auctions">
+        <layout:page-body title="index.title">
             <table class="tablesorter">
                 <thead>
                 <tr>
-                    <th>Minimum Price</th>
-                    <th>Description</th>
+                    <th><s:message code="auction.new.minimumPrice"/></th>
+                    <th><s:message code="auction.new.description"/></th>
                 </tr>
                 </thead>
                 <c:forEach var="auction" items="${auctions}">

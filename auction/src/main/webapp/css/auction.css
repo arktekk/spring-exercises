@@ -111,6 +111,40 @@ a {
 
 .error{
     color:red;
+    float:left;
+    padding-left:20px;
 }
 
+table.tablesorter {
+	background-color: #ffffff;
+	width: auto;
+}
+table.tablesorter th {
+	text-align: left;
+	background-color: #ffffff;
+    border-bottom:silver;
+}
+table.tablesorter .even {
+	background-color: #ffff00;
+}
+table.tablesorter .odd {
+	background-color: #ffffff;
+}
+table.tablesorter .header {
+	background-repeat: no-repeat;
+	height: auto;
+}
+
+form table td label{
+    width:100px;
+    float:left;
+}
+
+form table td input{
+    width:100px;
+    float:left;
+}
+.submit{
+    float:left;
+}
 
