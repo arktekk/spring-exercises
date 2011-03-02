@@ -4,7 +4,6 @@ import no.arktekk.training.spring.domain.Category;
 import no.arktekk.training.spring.repository.impl.JdbcCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 /**

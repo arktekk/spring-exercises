@@ -2,13 +2,9 @@ package no.arktekk.training.spring.converter;
 
 import no.arktekk.training.spring.config.DatabaseConfig;
 import no.arktekk.training.spring.domain.Category;
-import no.arktekk.training.spring.repository.BasicCrudRepository;
 import no.arktekk.training.spring.repository.impl.JdbcCategoryRepository;
-import no.arktekk.training.spring.util.Cache;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.transaction.annotation.Transactional;
 
 import static java.lang.String.valueOf;
 import static org.junit.Assert.assertEquals;

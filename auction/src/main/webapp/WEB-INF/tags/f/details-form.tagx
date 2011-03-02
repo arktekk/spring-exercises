@@ -1,0 +1,50 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          version="2.0"
+          xmlns:s="http://www.springframework.org/tags" xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:directive.attribute name="label"/>
+    <jsp:directive.attribute name="id"/>
+    <jsp:directive.attribute name="action"/>
+    <jsp:directive.attribute name="parentId"/>
+    <jsp:directive.attribute name="parentAction"/>
+    <jsp:directive.attribute name="commandName"/>
+
+    <a href="#" id="${id}-add-element" style="clear:both;display:block;"><s:message code="${label}"/></a>
+
+
+    <form:form action="${action}" commandName="${commandName}" id="${id}" class="sub-form">
+        <jsp:doBody/>
+        <a href="#" id="${id}-submit" style="clear:both;display:block;"><s:message code="form.add"/></a>
+    </form:form>
+
+    <script>
+        $(function() {
+
+            function showForm() {
+                $("#${id}").show("blind", {}, 500);
+                $("#${id}-add-element").hide();
+                $(":submit").hide();
+                document.forms["${parentId}"].action = "${action}"
+            }
+
+            function hideForm() {
+                $("#${id}:visible").removeAttr("style").fadeOut();
+                $("#${id}-add-element").show();
+                $(":submit").show();
+                document.forms["${parentId}"].action = "${parentAction}"
+            }
+
+            $("#${id}-submit").click(function() {
+                hideForm();
+                document.forms["${id}"].submit();
+            });
+
+            $("#${id}-add-element").click(function() {
+                showForm();
+                return false;
+            });
+
+            $("#${id}").hide();
+        });
+    </script>
+</jsp:root>

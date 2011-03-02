@@ -40,10 +40,10 @@ public class Transformations {
             AuctionForm form = new AuctionForm();
             form.setAlbums(transform(auction.albums(), asAlbumForm));
             form.setDescription(auction.description());
-            form.setExpires(auction.expires());
+            form.setExpiresDate(auction.expires());
             form.setId(auction.id());
             form.setMinimumPrice(auction.minimumPrice());
-            form.setStarts(auction.starts());
+            form.setStartDate(auction.starts());
             return form;
         }
     };

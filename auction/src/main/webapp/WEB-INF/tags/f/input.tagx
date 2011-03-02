@@ -6,10 +6,9 @@
     <jsp:directive.attribute name="name" type="java.lang.String" required="true"/>
     <jsp:directive.attribute name="label" type="java.lang.String" required="false"/>
 
-
-    <form:label path="${name}"><spring:message code="${label}"/></form:label>
-
-
-    <form:input path="${name}"/>
-    <form:errors path="${name}" cssClass="error"/>
+    <div class="field">
+        <form:label path="${name}"><spring:message code="${label}"/></form:label>
+        <form:input path="${name}"/>
+        <form:errors path="${name}" cssClass="error"/>
+    </div>
 </jsp:root>

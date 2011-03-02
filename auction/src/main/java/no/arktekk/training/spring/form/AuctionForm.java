@@ -9,25 +9,25 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.format.annotation.NumberFormat.Style.CURRENCY;
+import static org.springframework.format.annotation.NumberFormat.Style.NUMBER;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class AuctionForm implements Form<Auction> {
 
-    @NotNull private Double id;
+    private Double id;
 
-    @NumberFormat(style = CURRENCY)
+    @NumberFormat(style = NUMBER)
     @NotNull private Double minimumPrice;
 
     private String description;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
-    @NotNull private DateTime starts;
+    @NotNull private DateTime startDate;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
-    @NotNull private DateTime expires;
+    @NotNull private DateTime expiresDate;
 
     private List<AlbumForm> albums = new ArrayList<AlbumForm>();
 
@@ -61,20 +61,20 @@ public class AuctionForm implements Form<Auction> {
         this.description = description;
     }
 
-    public DateTime getStarts() {
-        return starts;
+    public DateTime getStartDate() {
+        return startDate;
     }
 
-    public void setStarts(DateTime starts) {
-        this.starts = starts;
+    public void setStartDate(DateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public DateTime getExpires() {
-        return expires;
+    public DateTime getExpiresDate() {
+        return expiresDate;
     }
 
-    public void setExpires(DateTime expires) {
-        this.expires = expires;
+    public void setExpiresDate(DateTime expiresDate) {
+        this.expiresDate = expiresDate;
     }
 
     public List<AlbumForm> getAlbums() {

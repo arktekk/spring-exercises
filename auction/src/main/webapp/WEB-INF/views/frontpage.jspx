@@ -8,8 +8,7 @@
     <layout:page title="index.title">
         <layout:menu>
             <ul>
-                <li><a href="/auctions/new"><img src="/img/icons/plus.png" alt="Ny auksjon"/>Ny auksjon</a></li>
-                <li><a href="/auctions/new"><img src="/img/icons/plus.png" alt="Ny auksjon"/>Ny auksjon</a></li>
+                <li><a href="/forms/auction"><img src="/img/icons/plus.png" alt="Ny auksjon"/>Ny auksjon</a></li>
             </ul>
         </layout:menu>
         <layout:page-body title="index.title">

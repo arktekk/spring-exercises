@@ -4,3 +4,6 @@
 target
 *.log
 .DS_Store
+.clover
+.settings
+.eclipse

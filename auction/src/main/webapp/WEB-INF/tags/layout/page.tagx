@@ -13,8 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <script type="text/javascript" src="/js/lib/jquery-1.5.min.js"><!-- prevent min --></script>
         <script type="text/javascript" src="/js/lib/jquery.tablesorter.min.js"><!-- prevent min --></script>
+        <script type="text/javascript" src="/js/lib/jquery-ui-1.8.10.custom.min.js"><!-- prevent min --></script>
         <script type="text/javascript" src="/js/modules/sorter.js"><!-- prevent min --></script>
         <link rel="stylesheet" href="/css/auction.css" type="text/css" media="print, projection, screen"/>
+        <link rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.8.10.custom.css" type="text/css" media="print, projection, screen"/>
+
     </head>
     <body>
     <div id="container">

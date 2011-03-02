@@ -56,4 +56,15 @@ public class AlbumForm implements Form<Album> {
     public void setTracks(Tracks tracks) {
         this.tracks = tracks;
     }
+
+    @Override
+    public String toString() {
+        return "AlbumForm{" +
+                "category=" + category +
+                ", artist=" + artist +
+                ", composer=" + composer +
+                ", label=" + label +
+                ", tracks=" + tracks +
+                '}';
+    }
 }

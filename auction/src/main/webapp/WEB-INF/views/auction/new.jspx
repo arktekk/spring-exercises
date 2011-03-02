@@ -1,0 +1,37 @@
+<jsp:root version="2.0"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:form="http://www.springframework.org/tags/form"
+          xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout"
+          xmlns:f="urn:jsptagdir:/WEB-INF/tags/f" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
+    <layout:page title="auction.new.title">
+        <layout:page-body title="auction.new.title">
+            <form:form id="auction-form" commandName="auction" action="/forms/auction">
+                <form:hidden path="id"/>
+                <f:input name="minimumPrice" label="auction.new.minimumPrice"/>
+                <f:input name="description" label="auction.new.description"/>
+                <f:input name="startDate" label="auction.new.starts"/>
+                <f:input name="expiresDate" label="auction.new.expires"/>
+
+                <div class="section">
+                    <c:forEach items="${auction.albums}" var="album">
+                        ${album.category.name}
+                    </c:forEach>
+                </div>
+                <f:submit/>
+            </form:form>
+
+            <f:details-form
+                    id="album-form"
+                    action="/forms/auction/album"
+                    commandName="album"
+                    label="auction.album.new"
+                    parentId="auction-form"
+                    parentAction="/forms/auction">
+                <form:errors/>
+                <form:select items="${categories}" itemValue="id" itemLabel="name" path="category"/>
+            </f:details-form>
+        </layout:page-body>
+    </layout:page>
+</jsp:root>
