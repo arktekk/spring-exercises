@@ -4,13 +4,20 @@ import no.arktekk.training.spring.util.AnnotationModelAndViewResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
 import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Config file that sets up Spring MVC the way I would like for the auction application.
@@ -59,10 +66,25 @@ public class MvcConfig {
     }
 
     /**
+     * Sets up the Spring ConversionService, and registers all the custom
+     * converters found in this project. By autowiring them in, we can also
+     * use dependency injection in the converters.
+     */
+    @Bean
+    @Autowired
+    public ConversionService conversionService(List<Converter> customConverters) {
+        ConversionServiceFactoryBean factoryBean = new ConversionServiceFactoryBean();
+        factoryBean.setConverters(new HashSet(customConverters));
+        factoryBean.afterPropertiesSet();
+        return factoryBean.getObject();
+
+    }
+
+    /**
      * Since we are using "/" as servlet mapping, we need to force the spring controller
      * servlet to use annotations as the first strategy for handling request mapping and
      * model attribute handling. If we do not enforce order=0 for the mapping, then
-     * the webserver default servlet will try to handle the reuest, and tries to find
+     * the webserver default servlet will try to handle the request, and tries to find
      * static resources instead.
      */
     @Autowired

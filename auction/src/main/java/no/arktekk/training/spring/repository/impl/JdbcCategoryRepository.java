@@ -7,6 +7,7 @@ import no.arktekk.training.spring.util.Cache;
 import no.arktekk.training.spring.util.Command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -19,10 +20,12 @@ import java.util.List;
  *
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
+@Repository
 public class JdbcCategoryRepository implements BasicCrudRepository<Category> {
     private final CategoryMapper categoryMapper = new CategoryMapper();
     private final JdbcTemplate template;
     private final Cache<Category> cache;
+
 
     @Autowired
     public JdbcCategoryRepository(DataSource dataSource) {
@@ -30,7 +33,6 @@ public class JdbcCategoryRepository implements BasicCrudRepository<Category> {
         this.cache = new Cache<Category>();
     }
 
-    @Autowired
     public JdbcCategoryRepository(DataSource dataSource, Cache<Category> cache) {
         this.template = new JdbcTemplate(dataSource);
         this.cache = cache;

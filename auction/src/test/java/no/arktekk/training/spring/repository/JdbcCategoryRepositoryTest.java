@@ -72,7 +72,7 @@ public class JdbcCategoryRepositoryTest {
 
     @Test
     public void cache() {
-        Cache cache = new Cache();
+        Cache<Category> cache = new Cache<Category>();
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource(), cache);
         assertEquals(0, cache.cacheHits());
         assertEquals(0, cache.cacheMiss());

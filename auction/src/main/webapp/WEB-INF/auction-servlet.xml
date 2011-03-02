@@ -9,7 +9,9 @@
 
     <mvc:annotation-driven/>
     <bean class="no.arktekk.training.spring.config.MvcConfig"/>
-    <context:component-scan base-package="no.arktekk.training.spring.controller"/>
+    <context:component-scan base-package="no.arktekk.training.spring" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>
     <mvc:resources mapping="/img/**" location="/img/" cache-period="31556926"/>
