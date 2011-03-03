@@ -20,7 +20,7 @@ public class Transformations {
 
     public static Function<? super AlbumForm, ? extends Album> asAlbum = new Function<AlbumForm, Album>() {
         public Album apply(AlbumForm form) {
-            return new Album(form.getCategory(), form.getArtist(), form.getComposer(), form.getLabel(), form.getTracks());
+            return new Album(form.getId(), form.getTitle(), form.getArtist(), form.getCategory(), form.getLabel(), form.getTracks());
         }
     };
 

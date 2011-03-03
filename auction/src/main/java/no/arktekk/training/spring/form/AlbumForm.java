@@ -1,22 +1,40 @@
 package no.arktekk.training.spring.form;
 
-import no.arktekk.training.spring.domain.*;
+import no.arktekk.training.spring.domain.Album;
+import no.arktekk.training.spring.domain.Category;
+import no.arktekk.training.spring.domain.Label;
+import no.arktekk.training.spring.domain.Track;
+
+import java.util.List;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class AlbumForm implements Form<Album> {
+    private Double id;
+    private String title;
+    private String artist;
     private Category category;
-    private Artist artist;
-    private Composer composer;
     private Label label;
-    private Tracks tracks;
+    private List<Track> tracks;
 
-    /**
-     * *********************************************************************
-     * Getters and Setters section.. Unfortunatly needed by spring mvc :(  *
-     * *********************************************************************
-     */
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Double getId() {
+        return id;
+    }
+
+    public void setId(Double id) {
+        this.id = id;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -25,20 +43,12 @@ public class AlbumForm implements Form<Album> {
         this.category = category;
     }
 
-    public Artist getArtist() {
+    public String getArtist() {
         return artist;
     }
 
-    public void setArtist(Artist artist) {
+    public void setArtist(String artist) {
         this.artist = artist;
-    }
-
-    public Composer getComposer() {
-        return composer;
-    }
-
-    public void setComposer(Composer composer) {
-        this.composer = composer;
     }
 
     public Label getLabel() {
@@ -49,22 +59,11 @@ public class AlbumForm implements Form<Album> {
         this.label = label;
     }
 
-    public Tracks getTracks() {
+    public List<Track> getTracks() {
         return tracks;
     }
 
-    public void setTracks(Tracks tracks) {
+    public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
-    }
-
-    @Override
-    public String toString() {
-        return "AlbumForm{" +
-                "category=" + category +
-                ", artist=" + artist +
-                ", composer=" + composer +
-                ", label=" + label +
-                ", tracks=" + tracks +
-                '}';
     }
 }

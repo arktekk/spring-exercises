@@ -1,40 +1,49 @@
 package no.arktekk.training.spring.domain;
 
+import java.util.List;
+
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class Album {
+    private final Double id;
+    private final String title;
+    private final String artist;
     private final Category category;
-    private final Artist artist;
-    private final Composer composer;
     private final Label label;
-    private final Tracks tracks;
+    private final List<Track> tracks;
 
-    public Album(Category category, Artist artist, Composer composer, Label label, Tracks tracks) {
+    public Album(Double id, String title, String artist, Category category, Label label, List<Track> tracks) {
+        this.id = id;
+        this.title = title;
         this.category = category;
         this.artist = artist;
-        this.composer = composer;
         this.label = label;
         this.tracks = tracks;
+    }
+
+    public Album(String title, String artist, Category category, Label label, List<Track> tracks) {
+        this(null, title, artist, category, label, tracks);
+    }
+
+    public String title() {
+        return title;
+    }
+
+    public String artist() {
+        return artist;
     }
 
     public Category category() {
         return category;
     }
 
-    public Artist artist() {
-        return artist;
-    }
-
-    public Composer composer() {
-        return composer;
-    }
 
     public Label label() {
         return label;
     }
 
-    public Tracks tracks() {
+    public List<Track> tracks() {
         return tracks;
     }
 
@@ -50,21 +59,15 @@ public class Album {
         Album album = (Album) o;
 
         if (artist != null ? !artist.equals(album.artist) : album.artist != null) return false;
-        if (category != null ? !category.equals(album.category) : album.category != null) return false;
-        if (composer != null ? !composer.equals(album.composer) : album.composer != null) return false;
-        if (label != null ? !label.equals(album.label) : album.label != null) return false;
-        if (tracks != null ? !tracks.equals(album.tracks) : album.tracks != null) return false;
+        if (title != null ? !title.equals(album.title) : album.title != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = category != null ? category.hashCode() : 0;
+        int result = title != null ? title.hashCode() : 0;
         result = 31 * result + (artist != null ? artist.hashCode() : 0);
-        result = 31 * result + (composer != null ? composer.hashCode() : 0);
-        result = 31 * result + (label != null ? label.hashCode() : 0);
-        result = 31 * result + (tracks != null ? tracks.hashCode() : 0);
         return result;
     }
 }
