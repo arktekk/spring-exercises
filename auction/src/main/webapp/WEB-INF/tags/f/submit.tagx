@@ -1,7 +1,8 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" xmlns:s="http://www.springframework.org/tags">
     <s:message code="form.store" var="submitMessage"/>
 
+    <jsp:directive.attribute name="id"/>
     <div class="field">
-        <input type="submit" value="${submitMessage}"/>
+        <input type="submit" value="${submitMessage}" onClick="document.forms['${id}'].submit();"/>
     </div>
 </jsp:root>

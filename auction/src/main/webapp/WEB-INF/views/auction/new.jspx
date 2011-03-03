@@ -9,17 +9,17 @@
         <layout:page-body title="auction.new.title">
             <form:form id="auction-form" commandName="auction" action="/forms/auction">
                 <form:hidden path="id"/>
-                <f:input name="minimumPrice" label="auction.new.minimumPrice"/>
-                <f:input name="description" label="auction.new.description"/>
-                <f:input name="startDate" label="auction.new.starts"/>
-                <f:input name="expiresDate" label="auction.new.expires"/>
+                <f:input path="minimumPrice" label="auction.new.minimumPrice"/>
+                <f:input path="description" label="auction.new.description"/>
+                <f:input path="startDate" label="auction.new.starts"/>
+                <f:input path="expiresDate" label="auction.new.expires"/>
 
                 <div class="section">
                     <c:forEach items="${auction.albums}" var="album">
                         ${album.category.name}
                     </c:forEach>
                 </div>
-                <f:submit/>
+
             </form:form>
 
             <f:details-form
@@ -30,8 +30,11 @@
                     parentId="auction-form"
                     parentAction="/forms/auction">
                 <form:errors/>
-                <form:select items="${categories}" itemValue="id" itemLabel="name" path="category"/>
+                <f:select path="category" items="${categories}" itemValue="id" itemLabel="name" label="album.new.category"/>
+
             </f:details-form>
+
+            <f:submit id="auction-form"/>
         </layout:page-body>
     </layout:page>
 </jsp:root>

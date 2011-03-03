@@ -1,0 +1,17 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          version="2.0"
+          xmlns:form="http://www.springframework.org/tags/form"
+          xmlns:spring="http://www.springframework.org/tags">
+    <jsp:directive.attribute name="items" rtexprvalue="true" type="java.lang.Object"/>
+    <jsp:directive.attribute name="itemValue"/>
+    <jsp:directive.attribute name="itemLabel"/>
+    <jsp:directive.attribute name="path"/>
+    <jsp:directive.attribute name="label"/>
+
+
+    <div class="field">
+        <form:label path="${path}"><spring:message code="${label}"/></form:label>
+        <form:select path="${path}" items="${items}" itemValue="${itemValue}" itemLabel="${itemLabel}"/>
+        <form:errors path="${path}" cssClass="error"/>
+    </div>
+</jsp:root>
