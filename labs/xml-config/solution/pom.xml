@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.arktekk.training.spring.labs</groupId>
-    <artifactId>dependency-injection</artifactId>
+    <artifactId>xml-config-solution</artifactId>
     <version>1.0</version>
     <name>Auction :: ${project.version}</name>
     <url>http://github.com/arktekk</url>
