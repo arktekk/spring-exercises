@@ -11,8 +11,6 @@
 
     <a href="#" id="${id}-add-element" style="clear:both;display:block;"><img src="/img/icons/plus.png" alt="Ny auksjon"/><s:message code="${label}"/></a>
 
-
-    <hr/>
     <form:form action="${action}" commandName="${commandName}" id="${id}" class="details-form">
         <jsp:doBody/>
         <a href="#" id="${id}-submit" style="clear:both;display:block;"><s:message code="form.add"/></a>

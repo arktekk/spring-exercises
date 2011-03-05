@@ -1,6 +1,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
           version="2.0" xmlns:f="urn:jsptagdir:/WEB-INF/tags/f"
           xmlns:form="http://www.springframework.org/tags/form">
+
     <f:details-form
             id="album-form"
             action="/forms/auction/album"
@@ -9,6 +10,7 @@
             parentId="auction-form"
             parentAction="/forms/auction">
         <form:errors/>
+        <form:hidden path="id"/>
         <f:input path="artist" label="album.artist"/>
         <f:input path="title" label="album.title"/>
         <f:select path="category" items="${categories}" itemValue="id" itemLabel="name" label="album.category"/>
@@ -19,9 +21,10 @@
             action="/forms/auction/album/track"
             commandName="newTrack"
             label="auction.album.track.new"
-            parentId="auction-form"
+            parentId="album-form"
             parentAction="/forms/auction">
         <form:errors/>
+        <form:hidden path="id"/>
         <f:input path="name" label="track.name"/>
         <f:input path="duration" label="track.duration"/>
         <f:input path="number" label="track.number"/>
