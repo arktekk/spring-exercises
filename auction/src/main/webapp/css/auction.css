@@ -4,6 +4,14 @@ body {
 
 a {
     color: #666666;
+    text-decoration: none;
+}
+
+a img {
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border: none;
 }
 
 #container {
@@ -94,66 +102,62 @@ a {
     text-align: left;
 }
 
-#page-menu img {
-    height: 40px;
-    width: 40px;
-    vertical-align: middle;
-    border: none;
-}
-
-#page-menu a {
-    text-decoration: none;
-}
-
 #page-menu a :hover {
     text-decoration: underline;
 }
 
-.error{
-    color:red;
-    float:left;
-    padding-left:20px;
+.error {
+    color: red;
+    float: left;
+    padding-left: 20px;
 }
 
-table.tablesorter {
-	background-color: #ffffff;
-	width: auto;
-}
-table.tablesorter th {
-	text-align: left;
-	background-color: #ffffff;
-    border-bottom:silver;
-}
-table.tablesorter .even {
-	background-color: #ffff00;
-}
-table.tablesorter .odd {
-	background-color: #ffffff;
-}
-table.tablesorter .header {
-	background-repeat: no-repeat;
-	height: auto;
+table {
+    background-color: #ffffff;
+    width:100%;
 }
 
-.field, .section{
-    display:block;
-    clear:both;
+table th {
+    text-align: left;
+    background-color: #ffffff;
+    border-bottom: silver;
 }
 
-.field label{
-    width:100px;
-    float:left;
+table .even {
+    background-color: #ffff00;
 }
 
-.field input{
-    width:100px;
-    float:left;
-}
-.submit{
-    float:left;
+table .odd {
+    background-color: #ffffff;
 }
 
-.sub-form{
-    display:none;
-    clear:both;
+table .header {
+    background-repeat: no-repeat;
+    height: auto;
 }
+
+.field, .section {
+    display: block;
+    clear: both;
+}
+
+.field label {
+    width: 100px;
+    float: left;
+}
+
+.field input {
+    width: 100px;
+    float: left;
+}
+
+.submit {
+    float: left;
+}
+
+.details-form {
+    display: none;
+    clear: both;
+    margin-left: 50px;
+}
+

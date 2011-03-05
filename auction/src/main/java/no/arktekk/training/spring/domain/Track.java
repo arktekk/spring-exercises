@@ -4,27 +4,32 @@ package no.arktekk.training.spring.domain;
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class Track {
+    private final Double id;
     private final String name;
     private final Duration duration;
     private final int number;
     private final boolean live;
     private final String note;
 
-    public Track(String name, int number, Duration duration) {
-        this.name = name;
-        this.duration = duration;
-        this.number = number;
-        this.live = false;
-        this.note = "";
-    }
 
-    public Track(String name, int number, Duration duration, boolean live, String note) {
+    public Track(double id, String name, int number, Duration duration, boolean live, String note) {
+        this.id = id;
         this.name = name;
         this.duration = duration;
         this.number = number;
         this.live = live;
         this.note = note;
     }
+
+    public Track(String name, int number, Duration duration, boolean live, String note) {
+        this.id = null;
+        this.name = name;
+        this.duration = duration;
+        this.number = number;
+        this.live = live;
+        this.note = note;
+    }
+
 
     public String name() {
         return name;

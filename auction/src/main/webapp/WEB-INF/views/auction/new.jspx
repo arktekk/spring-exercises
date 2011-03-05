@@ -3,11 +3,13 @@
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:form="http://www.springframework.org/tags/form"
           xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout"
-          xmlns:f="urn:jsptagdir:/WEB-INF/tags/f" xmlns:c="http://java.sun.com/jsp/jstl/core">
+          xmlns:f="urn:jsptagdir:/WEB-INF/tags/f"
+          xmlns:p="urn:jsptagdir:/WEB-INF/tags/partials"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
     <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
     <layout:page title="auction.new.title">
         <layout:page-body title="auction.new.title">
-            <form:form id="auction-form" commandName="auction" action="/forms/auction">
+            <form:form id="auction-form" commandName="newAuction" action="/forms/auction">
                 <form:hidden path="id"/>
                 <f:input path="minimumPrice" label="auction.new.minimumPrice"/>
                 <f:input path="description" label="auction.new.description"/>
@@ -15,6 +17,8 @@
                 <f:input path="expiresDate" label="auction.new.expires"/>
 
                 <div class="section">
+                    <hr/>
+                    <h3>Albumer</h3>
                     <c:forEach items="${auction.albums}" var="album">
                         ${album.category.name}
                     </c:forEach>
@@ -22,17 +26,9 @@
 
             </form:form>
 
-            <f:details-form
-                    id="album-form"
-                    action="/forms/auction/album"
-                    commandName="album"
-                    label="auction.album.new"
-                    parentId="auction-form"
-                    parentAction="/forms/auction">
-                <form:errors/>
-                <f:select path="category" items="${categories}" itemValue="id" itemLabel="name" label="album.new.category"/>
+            <p:album-form/>
 
-            </f:details-form>
+
 
             <f:submit id="auction-form"/>
         </layout:page-body>

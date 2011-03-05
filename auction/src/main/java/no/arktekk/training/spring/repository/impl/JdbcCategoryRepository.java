@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 /**
- * Responsible for storing, and loading data from the Category table.
+ * Responsible for storing, and loading data from the Categories table.
  * Created as a repository in order to add cache, since categories
  * are often accessed, to hit the database each time would become
  * an application bottleneck
@@ -41,26 +41,26 @@ public class JdbcCategoryRepository implements BasicCrudRepository<Category> {
     @Override public Category find(final Object id) {
         return cache.get(id, new Command<Category>() {
             public Category execute() {
-                return template.queryForObject("select * from Category where id=?", categoryMapper, id);
+                return template.queryForObject("select * from Categories where id=?", categoryMapper, id);
             }
         });
     }
 
     @Override public List<Category> list() {
-        return template.query("select * from Category", categoryMapper);
+        return template.query("select * from Categories", categoryMapper);
     }
 
     @Override public void addNew(Category category) {
-        template.update("insert into Category values(?,?)", category.getId(), category.getName());
+        template.update("insert into Categories values(?,?)", category.getId(), category.getName());
     }
 
     @Override public void update(Category category) {
-        template.update("update Category set name=? where id=?", category.getName(), category.getId());
+        template.update("update Categories set name=? where id=?", category.getName(), category.getId());
         cache.evict(category.getId());
     }
 
     @Override public void delete(Category category) {
-        template.update("delete from Category where id=?", category.getId());
+        template.update("delete from Categories where id=?", category.getId());
         cache.evict(category.getId());
     }
 }

@@ -30,12 +30,12 @@ public class JdbcAuctionRepository implements AuctionRepository {
     public List<Auction> listAllRunningAuctions() {
         DateTime now = new DateTime();
         return template.query(
-                "select * from Auction where ? between starts and expires",
+                "select * from Auctions where ? between starts and expires",
                 new AuctionMapper(),
                 timeStampFormatter.print(now.toDate(), no_NO));
     }
 
     public Auction findById(Double auctionId) {
-        return template.queryForObject("select * from Auction where id = ?", new AuctionMapper(), auctionId);
+        return template.queryForObject("select * from Auctions where id = ?", new AuctionMapper(), auctionId);
     }
 }

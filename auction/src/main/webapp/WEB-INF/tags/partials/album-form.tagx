@@ -1,0 +1,21 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          version="2.0" xmlns:f="urn:jsptagdir:/WEB-INF/tags/f"
+          xmlns:form="http://www.springframework.org/tags/form">
+    <f:details-form
+            id="album-form"
+            action="/forms/auction/album"
+            commandName="newAlbum"
+            label="auction.album.new"
+            parentId="auction-form"
+            parentAction="/forms/auction">
+        <form:errors/>
+        <f:select path="category" items="${categories}" itemValue="id" itemLabel="name" label="album.new.category"/>
+        <f:input path="artist"/>
+    private final Category category;
+    private final Artist artist;
+    private final Composer composer;
+    private final Label label;
+    private final Tracks tracks;
+
+    </f:details-form>
+</jsp:root>

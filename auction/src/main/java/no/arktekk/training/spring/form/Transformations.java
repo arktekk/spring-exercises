@@ -31,6 +31,7 @@ public class Transformations {
             form.setCategory(album.category());
             form.setLabel(album.label());
             form.setTracks(album.tracks());
+            form.setTitle(album.title());
             return form;
         }
     };

@@ -1,6 +1,8 @@
 package no.arktekk.training.spring.service.impl;
 
+import no.arktekk.training.spring.domain.Album;
 import no.arktekk.training.spring.domain.Auction;
+import no.arktekk.training.spring.repository.AlbumRepository;
 import no.arktekk.training.spring.repository.AuctionRepository;
 import no.arktekk.training.spring.service.AuctionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,12 @@ import java.util.List;
 @Service
 public class AuctionServiceImpl implements AuctionService {
     private final AuctionRepository auctionRepository;
+    private final AlbumRepository albumRepository;
 
     @Autowired
-    public AuctionServiceImpl(AuctionRepository auctionRepository) {
+    public AuctionServiceImpl(AuctionRepository auctionRepository, AlbumRepository albumRepository) {
         this.auctionRepository = auctionRepository;
+        this.albumRepository = albumRepository;
     }
 
 
@@ -29,6 +33,11 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Transactional(readOnly = true)
     public Auction findById(Double auctionId) {
-        return auctionRepository.findById(auctionId);
+        Auction auction = auctionRepository.findById(auctionId);
+        List<Album> albums = albumRepository.listForAuction(auction.id());
+        for (Album album : albums) {
+            auction.albums().add(album);
+        }
+        return auction;
     }
 }

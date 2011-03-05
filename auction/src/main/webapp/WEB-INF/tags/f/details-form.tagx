@@ -9,10 +9,11 @@
     <jsp:directive.attribute name="parentAction"/>
     <jsp:directive.attribute name="commandName"/>
 
-    <a href="#" id="${id}-add-element" style="clear:both;display:block;"><s:message code="${label}"/></a>
+    <a href="#" id="${id}-add-element" style="clear:both;display:block;"><img src="/img/icons/plus.png" alt="Ny auksjon"/><s:message code="${label}"/></a>
 
 
-    <form:form action="${action}" commandName="${commandName}" id="${id}" class="sub-form">
+    <hr/>
+    <form:form action="${action}" commandName="${commandName}" id="${id}" class="details-form">
         <jsp:doBody/>
         <a href="#" id="${id}-submit" style="clear:both;display:block;"><s:message code="form.add"/></a>
     </form:form>

@@ -1,6 +1,7 @@
 package no.arktekk.training.spring.repository;
 
 import no.arktekk.training.spring.config.DatabaseConfig;
+import no.arktekk.training.spring.config.TestDataPopulator;
 import no.arktekk.training.spring.domain.Category;
 import no.arktekk.training.spring.repository.impl.JdbcCategoryRepository;
 import no.arktekk.training.spring.util.Cache;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static java.lang.Integer.MAX_VALUE;
@@ -22,26 +24,28 @@ public class JdbcCategoryRepositoryTest {
     private DatabaseConfig config = new DatabaseConfig();
 
     @Before
-    public void testAssumtions() {
-        JdbcTemplate template = new JdbcTemplate(config.dataSource());
-        assertEquals(7, template.queryForInt("select count(*) from category"));
+    public void testAssumtions() throws Exception {
+        DataSource dataSource = config.dataSource();
+        JdbcTemplate template = new JdbcTemplate(dataSource);
+        new TestDataPopulator(dataSource).generateDatabaseIfEmpty();
+        assertEquals(7, template.queryForInt("select count(*) from Categories"));
     }
 
     @Test
-    public void findExistingCategory() {
+    public void findExistingCategory() throws Exception {
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource());
         Category category = repository.find(1);
         assertEquals("Progrock", category.getName());
     }
 
     @Test(expected = EmptyResultDataAccessException.class)
-    public void findNonExistingCategory() {
+    public void findNonExistingCategory() throws Exception {
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource());
         repository.find(MAX_VALUE);
     }
 
     @Test
-    public void updateExistingCategory() {
+    public void updateExistingCategory() throws Exception {
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource());
         Category category = repository.find(1);
         assertEquals("Progrock", category.getName());
@@ -53,14 +57,14 @@ public class JdbcCategoryRepositoryTest {
     }
 
     @Test
-    public void listAllCategories() {
+    public void listAllCategories() throws Exception {
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource());
         List<Category> categories = repository.list();
         assertEquals(7, categories.size());
     }
 
     @Test
-    public void addAndRemoveCategory() {
+    public void addAndRemoveCategory() throws Exception {
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource());
         int id = MAX_VALUE;
         Category category = new Category(id, "Sutrepop");
@@ -71,7 +75,7 @@ public class JdbcCategoryRepositoryTest {
     }
 
     @Test
-    public void cache() {
+    public void cache() throws Exception {
         Cache<Category> cache = new Cache<Category>();
         BasicCrudRepository<Category> repository = new JdbcCategoryRepository(config.dataSource(), cache);
         assertEquals(0, cache.cacheHits());
@@ -86,9 +90,9 @@ public class JdbcCategoryRepositoryTest {
     }
 
     @After
-    public void checkSideEffects() {
+    public void checkSideEffects() throws Exception {
         JdbcTemplate template = new JdbcTemplate(config.dataSource());
-        assertEquals(7, template.queryForInt("select count(*) from category"));
+        assertEquals(7, template.queryForInt("select count(*) from Categories"));
     }
 }
 

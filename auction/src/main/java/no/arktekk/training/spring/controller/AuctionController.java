@@ -24,7 +24,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 @Controller
-@SessionAttributes("auction")
+@SessionAttributes("newAuction")
 public class AuctionController {
     private final AuctionService auctionService;
     private final JdbcCategoryRepository categoryRepository;
@@ -40,6 +40,7 @@ public class AuctionController {
     @View(value = "auction/details", modelAttribute = "auction")
     public AuctionForm showDetails(@PathVariable Double auctionId) {
         return asAuctionForm.apply(auctionService.findById(auctionId));
+
     }
 
     @RequestMapping("/forms/auction")
@@ -48,7 +49,7 @@ public class AuctionController {
     }
 
     @RequestMapping(value = "/forms/auction", method = POST)
-    public String createAuction(@Valid @ModelAttribute("auction") AuctionForm auction, BindingResult bindingResult) {
+    public String createAuction(@Valid @ModelAttribute("newAuction") AuctionForm auction, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "auction/new";
         } else {
@@ -58,17 +59,17 @@ public class AuctionController {
 
     @RequestMapping(value = "/forms/auction/album", method = POST)
     @View("auction/new")
-    public void addAlbum(@ModelAttribute("auction") AuctionForm auction,
-                         @ModelAttribute("album") AlbumForm album) {
+    public void addAlbum(@ModelAttribute("newAuction") AuctionForm auction,
+                         @ModelAttribute("newAlbum") AlbumForm album) {
         auction.getAlbums().add(album);
     }
 
-    @ModelAttribute("auction")
+    @ModelAttribute("newAuction")
     public AuctionForm auction() {
         return new AuctionForm();
     }
 
-    @ModelAttribute("album")
+    @ModelAttribute("newAlbum")
     public AlbumForm album() {
         return new AlbumForm();
     }
