@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:property-placeholder location="classpath:auction.properties"/>
+
+    <bean id="auctionRepository" class="no.arktekk.training.spring.repository.impl.StubAuctionRepository"/>
+
+    <bean id="auctionService" class="no.arktekk.training.spring.service.impl.DefaultAuctionService">
+        <constructor-arg ref="auctionRepository"/>
+    </bean>
+
+    <bean class="no.arktekk.training.spring.no.arktekk.training.spring.config.TestDataPopulator"
+            p:useExtendedTestDataSet="${useExtendedTestData}">
+        <constructor-arg ref="auctionRepository"/>
+    </bean>
+
+
+</beans>
