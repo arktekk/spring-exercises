@@ -1,9 +1,9 @@
 package no.arktekk.training.spring.form;
 
+import com.google.common.collect.Lists;
 import no.arktekk.training.spring.domain.Album;
 import no.arktekk.training.spring.domain.Category;
 import no.arktekk.training.spring.domain.Label;
-import no.arktekk.training.spring.domain.Track;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class AlbumForm implements Form<Album> {
     private String artist;
     private Category category;
     private Label label;
-    private List<Track> tracks;
+    private List<TrackForm> tracks = Lists.newArrayList();
 
 
     public String getTitle() {
@@ -59,11 +59,15 @@ public class AlbumForm implements Form<Album> {
         this.label = label;
     }
 
-    public List<Track> getTracks() {
+    public List<TrackForm> getTracks() {
         return tracks;
     }
 
-    public void setTracks(List<Track> tracks) {
+    public void setTracks(List<TrackForm> tracks) {
         this.tracks = tracks;
+    }
+
+    public void addTrack(TrackForm track) {
+        this.tracks.add(track);
     }
 }

@@ -1,9 +1,12 @@
 package no.arktekk.training.spring.controller;
 
 import no.arktekk.training.spring.domain.Category;
+import no.arktekk.training.spring.domain.Label;
 import no.arktekk.training.spring.form.AlbumForm;
 import no.arktekk.training.spring.form.AuctionForm;
+import no.arktekk.training.spring.form.TrackForm;
 import no.arktekk.training.spring.repository.impl.JdbcCategoryRepository;
+import no.arktekk.training.spring.repository.impl.JdbcLabelRepository;
 import no.arktekk.training.spring.service.AuctionService;
 import no.arktekk.training.spring.util.View;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +31,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class AuctionController {
     private final AuctionService auctionService;
     private final JdbcCategoryRepository categoryRepository;
+    private final JdbcLabelRepository labelRepository;
 
     @Autowired
     public AuctionController(AuctionService auctionService,
-                             JdbcCategoryRepository categoryRepository) {
+                             JdbcCategoryRepository categoryRepository,
+                             JdbcLabelRepository labelRepository) {
         this.auctionService = auctionService;
         this.categoryRepository = categoryRepository;
+        this.labelRepository = labelRepository;
     }
 
     @RequestMapping("/auctions/{auctionId}")
@@ -64,6 +70,13 @@ public class AuctionController {
         auction.getAlbums().add(album);
     }
 
+    @RequestMapping(value = "/forms/auction/album/track", method = POST)
+    @View("auction/new")
+    public void addTrack(@ModelAttribute("newAlbum") AlbumForm album,
+                         @ModelAttribute("newTrack") TrackForm track) {
+        album().addTrack(track);
+    }
+
     @ModelAttribute("newAuction")
     public AuctionForm auction() {
         return new AuctionForm();
@@ -74,8 +87,18 @@ public class AuctionController {
         return new AlbumForm();
     }
 
+    @ModelAttribute("newTrack")
+    public TrackForm track() {
+        return new TrackForm();
+    }
+
     @ModelAttribute("categories")
     public List<Category> categories() {
         return categoryRepository.list();
+    }
+
+    @ModelAttribute("labels")
+    public List<Label> labels() {
+        return labelRepository.list();
     }
 }

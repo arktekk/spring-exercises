@@ -31,6 +31,10 @@ public class Track {
     }
 
 
+    public Double id() {
+        return id;
+    }
+
     public String name() {
         return name;
     }

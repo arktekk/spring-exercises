@@ -9,13 +9,23 @@
             parentId="auction-form"
             parentAction="/forms/auction">
         <form:errors/>
-        <f:select path="category" items="${categories}" itemValue="id" itemLabel="name" label="album.new.category"/>
-        <f:input path="artist"/>
-    private final Category category;
-    private final Artist artist;
-    private final Composer composer;
-    private final Label label;
-    private final Tracks tracks;
-
+        <f:input path="artist" label="album.artist"/>
+        <f:input path="title" label="album.title"/>
+        <f:select path="category" items="${categories}" itemValue="id" itemLabel="name" label="album.category"/>
+        <f:select path="label" items="${labels}" itemValue="id" itemLabel="name" label="album.label"/>
+    </f:details-form>
+    <f:details-form
+            id="track-form"
+            action="/forms/auction/album/track"
+            commandName="newTrack"
+            label="auction.album.track.new"
+            parentId="auction-form"
+            parentAction="/forms/auction">
+        <form:errors/>
+        <f:input path="name" label="track.name"/>
+        <f:input path="duration" label="track.duration"/>
+        <f:input path="number" label="track.number"/>
+        <f:checkbox path="live" label="track.live"/>
+        <f:input path="note" label="track.note"/>
     </f:details-form>
 </jsp:root>
