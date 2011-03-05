@@ -51,8 +51,8 @@ public class DependencyInjectionTest {
     @Test public void shouldPassWhenStep1AndStep2Completed() {
         ApplicationContext ctx = createSpringContainer();
         AuctionRepository auctionRepository = lookupAuctionRepository(ctx);
-        AuctionService auctionService = lookupAuctionService(ctx);
 
+        AuctionService auctionService = lookupAuctionService(ctx);
         assertEquals(0, auctionService.allRunningAuctions().size());
 
         auctionRepository.createNewAuction(new Auction(1, "My first auction"));
