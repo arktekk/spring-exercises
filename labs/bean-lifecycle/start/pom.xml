@@ -8,5 +8,5 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>bean-lifecycle-start</artifactId>
-    <name>Auction :: Labs :: Bean Lifecycle</name>
+    <name>Labs :: Bean Lifecycle</name>
 </project>

@@ -8,5 +8,5 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>xml-config-start</artifactId>
-    <name>Auction :: Labs :: XML Config</name>
+    <name>Labs :: XML Config</name>
 </project>

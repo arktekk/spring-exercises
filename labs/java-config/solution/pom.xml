@@ -8,5 +8,5 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>java-config-solution</artifactId>
-    <name>Auction :: Labs :: Java Config</name>
+    <name>Labs :: Java Config</name>
 </project>

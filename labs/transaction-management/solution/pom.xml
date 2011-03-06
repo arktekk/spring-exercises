@@ -7,6 +7,6 @@
         <version>1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>java-config-start</artifactId>
-    <name>Labs :: Java Config</name>
+    <artifactId>transaction-management-solution</artifactId>
+    <name>Labs :: Transaction Management</name>
 </project>

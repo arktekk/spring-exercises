@@ -8,5 +8,5 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>annotation-config-solution</artifactId>
-    <name>Auction :: Labs :: Annotation Config</name>
+    <name>Labs :: Annotation Config</name>
 </project>

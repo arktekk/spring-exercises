@@ -5,7 +5,7 @@
     <artifactId>labs-parent</artifactId>
     <packaging>pom</packaging>
     <version>1</version>
-    <name>Spring :: Labs</name>
+    <name>Labs</name>
     <url>https://github.com/arktekk/spring-exercises</url>
 
     <modules>
@@ -14,6 +14,7 @@
         <module>java-config/solution</module>
         <module>bean-lifecycle/solution</module>
         <module>jdbc/solution</module>
+        <module>transaction-management/solution</module>
     </modules>
 
     <properties>
@@ -26,6 +27,11 @@
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
         </dependency>
 
         <!--

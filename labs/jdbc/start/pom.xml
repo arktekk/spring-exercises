@@ -8,5 +8,5 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>jdbc-start</artifactId>
-    <name>Auction :: Labs :: JDBC</name>
+    <name>Labs :: JDBC</name>
 </project>
