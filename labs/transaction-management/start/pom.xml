@@ -7,6 +7,6 @@
         <version>1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>transaction-management-solution</artifactId>
+    <artifactId>transaction-management-start</artifactId>
     <name>Labs :: Transaction Management</name>
 </project>
