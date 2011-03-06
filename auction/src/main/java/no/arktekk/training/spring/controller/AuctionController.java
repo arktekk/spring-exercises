@@ -10,7 +10,6 @@ import no.arktekk.training.spring.service.AuctionService;
 import no.arktekk.training.spring.util.View;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,15 +73,11 @@ public class AuctionController {
     @RequestMapping(value = "/forms/auction/album", method = POST)
     public String addAlbum(@ModelAttribute(AUCTION_FORM_KEY) AuctionForm auction,
                            @Valid @ModelAttribute(ALBUM_FORM_KEY) AlbumForm album,
-                           BindingResult bindingResult,
-                           ModelMap model) {
+                           BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
             auction.getAlbums().add(album);
-            model.addAttribute(AUCTION_FORM_KEY, auction);
-            return REDIRECT_URL_PREFIX + "/forms/auction";
-        } else {
-            return "/auction/new";
         }
+        return "auction/new";
     }
 
     @ModelAttribute(AUCTION_FORM_KEY)

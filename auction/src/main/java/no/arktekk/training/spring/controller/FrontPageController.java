@@ -33,6 +33,5 @@ public class FrontPageController {
             forms.add(asAuctionForm.apply(auction));
         }
         return forms;
-
     }
 }

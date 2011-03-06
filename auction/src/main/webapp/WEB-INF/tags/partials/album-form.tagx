@@ -27,7 +27,6 @@
             label="auction.album.new"
             parentId="auction-form"
             parentAction="/forms/auction">
-        <form:errors/>
         <form:hidden path="id"/>
         <f:input path="artist" label="album.artist"/>
         <f:input path="title" label="album.title"/>
