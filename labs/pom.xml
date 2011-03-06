@@ -15,6 +15,7 @@
         <module>bean-lifecycle/solution</module>
         <module>jdbc/solution</module>
         <module>transaction-management/solution</module>
+        <module>aop/solution</module>
     </modules>
 
     <properties>
