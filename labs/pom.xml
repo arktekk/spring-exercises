@@ -16,10 +16,13 @@
         <module>jdbc/solution</module>
         <module>transaction-management/solution</module>
         <module>aop/solution</module>
+        <module>mvc/solution</module>
     </modules>
 
     <properties>
         <spring.version>3.0.5.RELEASE</spring.version>
+        <jetty.version>7.3.0.v20110203</jetty.version>
+        <jsp.version>2.1.v20100127</jsp.version>
     </properties>
 
     <dependencies>
