@@ -5,7 +5,6 @@ import no.arktekk.training.spring.config.TestDataPopulator;
 import no.arktekk.training.spring.domain.Auction;
 import no.arktekk.training.spring.repository.impl.JdbcAuctionRepository;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;

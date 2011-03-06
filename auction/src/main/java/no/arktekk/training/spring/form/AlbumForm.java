@@ -1,22 +1,21 @@
 package no.arktekk.training.spring.form;
 
-import com.google.common.collect.Lists;
 import no.arktekk.training.spring.domain.Album;
 import no.arktekk.training.spring.domain.Category;
 import no.arktekk.training.spring.domain.Label;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class AlbumForm implements Form<Album> {
-    private Double id;
-    private String title;
-    private String artist;
-    private Category category;
-    private Label label;
-    private List<TrackForm> tracks = Lists.newArrayList();
+    private Long id;
+    @NotEmpty private String title;
+    @NotEmpty private String artist;
+    @NotNull private Category category;
+    @NotNull private Label label;
 
 
     public String getTitle() {
@@ -27,11 +26,11 @@ public class AlbumForm implements Form<Album> {
         this.title = title;
     }
 
-    public Double getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,17 +56,5 @@ public class AlbumForm implements Form<Album> {
 
     public void setLabel(Label label) {
         this.label = label;
-    }
-
-    public List<TrackForm> getTracks() {
-        return tracks;
-    }
-
-    public void setTracks(List<TrackForm> tracks) {
-        this.tracks = tracks;
-    }
-
-    public void addTrack(TrackForm track) {
-        this.tracks.add(track);
     }
 }

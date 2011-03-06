@@ -69,7 +69,6 @@ public class TestDataPopulator {
     private void createTables() {
         template.update("CREATE TABLE Auctions(id DOUBLE PRIMARY KEY, minimumPrice DOUBLE, starts TIMESTAMP, expires TIMESTAMP, description VARCHAR)");
         template.update("CREATE TABLE Albums(id DOUBLE PRIMARY KEY, auctionId DOUBLE, title VARCHAR, artist VARCHAR , categoryId INT, labelId INT)");
-        template.update("CREATE TABLE Tracks(id DOUBLE PRIMARY KEY, albumId DOUBLE, Name VARCHAR, number INT, durationMinutes INT, durationSeconds INT, live BIT, Note VARCHAR )");
         template.update("CREATE TABLE Categories(Id INT PRIMARY KEY, Name VARCHAR)");
         template.update("CREATE TABLE Labels(Id INT PRIMARY KEY, Name VARCHAR)");
     }
@@ -79,7 +78,6 @@ public class TestDataPopulator {
         insertCategories();
         insertAuctions();
         insertAlbums();
-        insertTracks();
         testDataInitialized = true;
 
     }
@@ -115,26 +113,6 @@ public class TestDataPopulator {
         template.update("insert into Albums values(1,1,'Aqualung','Jethro Tull',1,1)");
         template.update("insert into Albums values(2,1,'Popol Vuh','Popol Vuh',1,3)");
         template.update("insert into Albums values(3,2,'In The Zone','Brittney Spears',2,2)");
-
-    }
-
-    private void insertTracks() {
-        template.update("insert into Tracks values(1,1,'Aqualung',1,6,37,0,'')");
-        template.update("insert into Tracks values(2,1,'Cross Eyed Mary',2,4,09,0,'')");
-        template.update("insert into Tracks values(3,1,'Cheap Day Return',3,1,23,0,'')");
-        template.update("insert into Tracks values(4,1,'Mother Goose',4,3,53,0,'')");
-
-
-        template.update("insert into Tracks values(5,2,'Hunchback',1,6,37,0,'')");
-        template.update("insert into Tracks values(6,2,'Joy & Pleasure',2,4,09,0,'')");
-        template.update("insert into Tracks values(7,2,'All We Have is the Past',3,1,23,0,'')");
-        template.update("insert into Tracks values(8,2,'Leavin Chigago',4,3,53,0,'')");
-
-
-        template.update("insert into Tracks values(9,3,'Me Against The Music',1,6,37,0,'')");
-        template.update("insert into Tracks values(10,3,'I Got That',2,4,09,0,'')");
-        template.update("insert into Tracks values(11,3,'Showdown',3,1,23,0,'')");
-        template.update("insert into Tracks values(12,3,'Toxic',4,3,53,0,'')");
 
     }
 }

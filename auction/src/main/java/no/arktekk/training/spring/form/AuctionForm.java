@@ -1,6 +1,7 @@
 package no.arktekk.training.spring.form;
 
 import no.arktekk.training.spring.domain.Auction;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -16,12 +17,10 @@ import static org.springframework.format.annotation.NumberFormat.Style.NUMBER;
  */
 public class AuctionForm implements Form<Auction> {
 
-    private Double id;
+    private Long id;
 
     @NumberFormat(style = NUMBER)
     @NotNull private Double minimumPrice;
-
-    private String description;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
     @NotNull private DateTime startDate;
@@ -29,19 +28,16 @@ public class AuctionForm implements Form<Auction> {
     @DateTimeFormat(pattern = DATE_PATTERN)
     @NotNull private DateTime expiresDate;
 
-    private List<AlbumForm> albums = new ArrayList<AlbumForm>();
+    @NotEmpty private List<AlbumForm> albums = new ArrayList<AlbumForm>();
+
+    private String description;
 
 
-    /**
-     * *********************************************************************
-     * Getters and Setters section.. Unfortunatly needed by spring mvc :(  *
-     * *********************************************************************
-     */
-    public Double getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

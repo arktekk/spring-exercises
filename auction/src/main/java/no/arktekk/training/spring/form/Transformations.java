@@ -3,7 +3,6 @@ package no.arktekk.training.spring.form;
 import com.google.common.base.Function;
 import no.arktekk.training.spring.domain.Album;
 import no.arktekk.training.spring.domain.Auction;
-import no.arktekk.training.spring.domain.Track;
 
 import static com.google.common.collect.Lists.transform;
 
@@ -21,7 +20,7 @@ public class Transformations {
 
     public static Function<? super AlbumForm, ? extends Album> asAlbum = new Function<AlbumForm, Album>() {
         public Album apply(AlbumForm form) {
-            return new Album(form.getId(), form.getTitle(), form.getArtist(), form.getCategory(), form.getLabel(), transform(form.getTracks(), asTrack));
+            return new Album(form.getId(), form.getTitle(), form.getArtist(), form.getCategory(), form.getLabel());
         }
     };
 
@@ -31,9 +30,22 @@ public class Transformations {
             form.setArtist(album.artist());
             form.setCategory(album.category());
             form.setLabel(album.label());
-            form.setTracks(transform(album.tracks(), asTrackForm));
             form.setTitle(album.title());
             return form;
+        }
+    };
+
+
+    public static Function<? super AuctionForm, ? extends Auction> asAuction = new Function<AuctionForm, Auction>() {
+        public Auction apply(AuctionForm form) {
+            return new Auction(
+                    form.getId(),
+                    form.getMinimumPrice(),
+                    form.getDescription(),
+                    form.getStartDate(),
+                    form.getExpiresDate(),
+                    transform(form.getAlbums(), asAlbum)
+            );
         }
     };
 
@@ -47,35 +59,6 @@ public class Transformations {
             form.setMinimumPrice(auction.minimumPrice());
             form.setStartDate(auction.starts());
             return form;
-        }
-    };
-
-    public static Function<? super Track, ? extends TrackForm> asTrackForm = new Function<Track, TrackForm>() {
-        public TrackForm apply(Track track) {
-            TrackForm form = new TrackForm();
-            form.setId(track.id());
-            form.setDuration(track.duration());
-            form.setLive(track.live());
-            form.setName(track.name());
-            form.setNote(track.note());
-            form.setNumber(track.number());
-            return form;
-        }
-    };
-
-
-    public static Function<? super TrackForm, ? extends Track> asTrack = new Function<TrackForm, Track>() {
-        public Track apply(TrackForm form) {
-            Track track = new Track(
-                    form.getId(),
-                    form.getName(),
-                    form.getNumber(),
-                    form.getDuration(),
-                    form.isLive(),
-                    form.getNote()
-            );
-
-            return track;
         }
     };
 }

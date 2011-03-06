@@ -1,8 +1,7 @@
 package no.arktekk.training.spring.repository.impl;
 
 import no.arktekk.training.spring.domain.Album;
-import no.arktekk.training.spring.mapper.DetailedAlbumMapper;
-import no.arktekk.training.spring.mapper.SimpleAlbumMapper;
+import no.arktekk.training.spring.mapper.AlbumMapper;
 import no.arktekk.training.spring.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,23 +16,26 @@ import java.util.List;
 @Repository
 public class JdbcAlbumRepository implements AlbumRepository {
     private final JdbcTemplate template;
-    private final SimpleAlbumMapper simpleAlbumMapper;
-    private final DetailedAlbumMapper detailedAlbumMapper;
+    private final AlbumMapper albumMapper;
 
     @Autowired
     public JdbcAlbumRepository(DataSource dataSource, JdbcCategoryRepository categoryRepository, JdbcLabelRepository labelRepository) {
         this.template = new JdbcTemplate(dataSource);
-        simpleAlbumMapper = new SimpleAlbumMapper(categoryRepository, labelRepository);
-        detailedAlbumMapper = new DetailedAlbumMapper(simpleAlbumMapper);
+        albumMapper = new AlbumMapper(categoryRepository, labelRepository);
     }
 
-    @Override
     public Album findById(double id) {
-        return template.query("select * from Albums albums, Tracks tracks WHERE tracks.albumId = albums.id AND albums.id = 1", detailedAlbumMapper);
+        return template.queryForObject("select * from Albums WHERE id = 1", albumMapper);
     }
 
-    @Override
     public List<Album> listForAuction(double auctionId) {
-        return template.query("select * from Albums where auctionId = ?", simpleAlbumMapper, auctionId);
+        return template.query("select * from Albums where auctionId = ?", albumMapper, auctionId);
+    }
+
+    public void storeForAuction(Long auctionId, List<Album> albums) {
+        for (Album album : albums) {
+            album.assignId();
+            template.update("insert into Albums values(?,?,?,?,?,?)", album.id(), auctionId, album.title(), album.artist(), album.category().getId(), album.label().getId());
+        }
     }
 }

@@ -34,7 +34,6 @@
             }
 
             $("#${id}-submit").click(function() {
-                hideForm();
                 document.forms["${id}"].submit();
             });
 
@@ -42,8 +41,12 @@
                 showForm();
                 return false;
             });
-
-            $("#${id}").hide();
+            var noErrors = $("#${id}").find(".error").length == 0;
+            if (noErrors) {
+                hideForm();
+            } else {
+                showForm();
+            }
         });
     </script>
 </jsp:root>

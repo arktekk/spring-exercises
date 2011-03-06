@@ -41,9 +41,6 @@
                         <td>${album.label}</td>
                     </tr>
                 </c:forEach>
-                <tr>
-
-                </tr>
             </table>
         </layout:page-body>
     </layout:page>

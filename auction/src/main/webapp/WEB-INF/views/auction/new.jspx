@@ -18,7 +18,6 @@
 
                 <div class="section">
                     <hr/>
-                    <h3>Albumer</h3>
                     <c:forEach items="${auction.albums}" var="album">
                         ${album.category.name}
                     </c:forEach>

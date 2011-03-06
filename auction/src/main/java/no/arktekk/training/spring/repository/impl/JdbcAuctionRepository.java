@@ -38,4 +38,13 @@ public class JdbcAuctionRepository implements AuctionRepository {
     public Auction findById(Double auctionId) {
         return template.queryForObject("select * from Auctions where id = ?", new AuctionMapper(), auctionId);
     }
+
+    public void newAuction(Auction auction) {
+        template.update("insert into Auctions values(?,?,?,?,?)",
+                auction.id(),
+                auction.minimumPrice(),
+                timeStampFormatter.print(auction.starts().toDate(), no_NO),
+                timeStampFormatter.print(auction.expires().toDate(), no_NO),
+                auction.description());
+    }
 }
