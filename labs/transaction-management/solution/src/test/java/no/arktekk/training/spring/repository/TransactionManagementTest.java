@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.AnnotationTransactionAttributeSource;
 
 import javax.sql.DataSource;
 
@@ -24,6 +25,9 @@ public class TransactionManagementTest {
 
     @Autowired
     private PlatformTransactionManager transactionManager;
+    
+    @Autowired
+    private AnnotationTransactionAttributeSource annotationTransactionAttributeSource;
 
     @Autowired
     private AuctionService auctionService;
