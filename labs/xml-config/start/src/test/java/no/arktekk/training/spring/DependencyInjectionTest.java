@@ -26,6 +26,7 @@ public class DependencyInjectionTest {
      */
     @Test public void step_1() {
         ApplicationContext ctx = createSpringContainer();
+        assertNotNull(ctx);
         AuctionRepository auctionRepository = lookupAuctionRepository(ctx);
         assertNotNull(auctionRepository);
     }
