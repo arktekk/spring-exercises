@@ -15,7 +15,7 @@
         <constructor-arg ref="auctionRepository"/>
     </bean>
 
-    <bean class="no.arktekk.training.spring.no.arktekk.training.spring.config.TestDataPopulator"
+    <bean class="no.arktekk.training.spring.config.TestDataPopulator"
             p:useExtendedTestDataSet="${useExtendedTestData}">
         <constructor-arg ref="auctionRepository"/>
     </bean>
