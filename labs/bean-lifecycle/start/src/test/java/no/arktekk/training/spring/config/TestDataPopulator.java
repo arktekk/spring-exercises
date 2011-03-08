@@ -1,4 +1,4 @@
-package no.arktekk.training.spring.no.arktekk.training.spring.config;
+package no.arktekk.training.spring.config;
 
 import no.arktekk.training.spring.domain.Auction;
 import no.arktekk.training.spring.repository.AuctionRepository;

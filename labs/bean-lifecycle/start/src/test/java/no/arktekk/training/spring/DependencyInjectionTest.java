@@ -1,6 +1,6 @@
 package no.arktekk.training.spring;
 
-import no.arktekk.training.spring.no.arktekk.training.spring.config.TestDataPopulator;
+import no.arktekk.training.spring.config.TestDataPopulator;
 import no.arktekk.training.spring.repository.AuctionRepository;
 import no.arktekk.training.spring.service.AuctionService;
 import org.junit.Test;
