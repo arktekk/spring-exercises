@@ -30,6 +30,7 @@ public class MvcTest {
      */
     @Test public void step_1() {
         assertNotNull(webappCtx.getBean(IndexController.class));
+        assertFalse(applicationCtx.containsBean("indexController"));
         for (String beanDefinedInWebCtx : webappCtx.getBeanDefinitionNames()) {
             if (!stdSpringBeanNames(beanDefinedInWebCtx))
                 assertFalse("Found double registered bean : " + beanDefinedInWebCtx, applicationCtx.containsBean(beanDefinedInWebCtx));
