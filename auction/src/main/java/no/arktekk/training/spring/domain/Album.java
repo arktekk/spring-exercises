@@ -1,16 +1,18 @@
 package no.arktekk.training.spring.domain;
 
+import java.util.UUID;
+
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class Album {
-    private Long id;
+    private String id;
     private final String title;
     private final String artist;
     private final Category category;
     private final Label label;
 
-    public Album(Long id, String title, String artist, Category category, Label label) {
+    public Album(String id, String title, String artist, Category category, Label label) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -18,7 +20,7 @@ public class Album {
         this.label = label;
     }
 
-    public Long id() {
+    public String id() {
         return id;
     }
 
@@ -39,9 +41,7 @@ public class Album {
         return label;
     }
 
-    public void assignId() {
-        if (id == null) {
-            id = System.currentTimeMillis();
-        }
+    public void assignNewId() {
+        id = UUID.randomUUID().toString();
     }
 }

@@ -49,7 +49,7 @@ public class AuctionController {
 
     @RequestMapping("/auctions/{auctionId}")
     @View(value = "auction/details", modelAttribute = "auction")
-    public AuctionForm showDetails(@PathVariable Double auctionId) {
+    public AuctionForm showDetails(@PathVariable String auctionId) {
         return asAuctionForm.apply(auctionService.findById(auctionId));
 
     }

@@ -67,8 +67,8 @@ public class TestDataPopulator {
     }
 
     private void createTables() {
-        template.update("CREATE TABLE Auctions(id DOUBLE PRIMARY KEY, minimumPrice DOUBLE, starts TIMESTAMP, expires TIMESTAMP, description VARCHAR)");
-        template.update("CREATE TABLE Albums(id DOUBLE PRIMARY KEY, auctionId DOUBLE, title VARCHAR, artist VARCHAR , categoryId INT, labelId INT)");
+        template.update("CREATE TABLE Auctions(id VARCHAR PRIMARY KEY, minimumPrice DOUBLE, starts TIMESTAMP, expires TIMESTAMP, description VARCHAR)");
+        template.update("CREATE TABLE Albums(id VARCHAR PRIMARY KEY, auctionId VARCHAR, title VARCHAR, artist VARCHAR , categoryId INT, labelId INT)");
         template.update("CREATE TABLE Categories(Id INT PRIMARY KEY, Name VARCHAR)");
         template.update("CREATE TABLE Labels(Id INT PRIMARY KEY, Name VARCHAR)");
     }
@@ -104,15 +104,15 @@ public class TestDataPopulator {
         String starts = timeStampFormatter.print(now.minusDays(10).toDate(), no_NO);
         String ends = timeStampFormatter.print(now.plusDays(10).toDate(), no_NO);
 
-        template.update("insert into Auctions values(1,1200,'" + starts + "','" + ends + "','Mint prog rock albums')");
-        template.update("insert into Auctions values(2,40,'" + starts + "','" + ends + "','Boring pop records')");
-        template.update("insert into Auctions values(3,40,'" + starts + "','" + starts + "','Expired auction')");
+        template.update("insert into Auctions values('1',1200,'" + starts + "','" + ends + "','Mint prog rock albums')");
+        template.update("insert into Auctions values('2',40,'" + starts + "','" + ends + "','Boring pop records')");
+        template.update("insert into Auctions values('3',40,'" + starts + "','" + starts + "','Expired auction')");
     }
 
     private void insertAlbums() {
-        template.update("insert into Albums values(1,1,'Aqualung','Jethro Tull',1,1)");
-        template.update("insert into Albums values(2,1,'Popol Vuh','Popol Vuh',1,3)");
-        template.update("insert into Albums values(3,2,'In The Zone','Brittney Spears',2,2)");
+        template.update("insert into Albums values('1',1,'Aqualung','Jethro Tull',1,1)");
+        template.update("insert into Albums values('2',1,'Popol Vuh','Popol Vuh',1,3)");
+        template.update("insert into Albums values('3',2,'In The Zone','Brittney Spears',2,2)");
 
     }
 }

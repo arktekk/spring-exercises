@@ -16,7 +16,7 @@ public class AuctionMapper implements RowMapper<Auction> {
 
     public Auction mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-        return new Auction(resultSet.getLong("id"),
+        return new Auction(resultSet.getString("id"),
                 resultSet.getDouble("minimumPrice"),
                 resultSet.getString("description"),
                 new DateTime(resultSet.getDate("starts")),

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class AlbumForm implements Form<Album> {
-    private Long id;
+    private String id;
     @NotEmpty private String title;
     @NotEmpty private String artist;
     @NotNull private Category category;
@@ -26,11 +26,11 @@ public class AlbumForm implements Form<Album> {
         this.title = title;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

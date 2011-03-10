@@ -10,9 +10,9 @@ import java.util.List;
  */
 @Transactional(readOnly = true)
 public interface AlbumRepository {
-    Album findById(double id);
+    Album findById(String id);
 
-    List<Album> listForAuction(double auctionId);
+    List<Album> listForAuction(String auctionId);
 
-    @Transactional void storeForAuction(Long id, List<Album> albums);
+    @Transactional void storeForAuction(String id, List<Album> albums);
 }

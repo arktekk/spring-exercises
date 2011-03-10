@@ -35,7 +35,7 @@ public class JdbcAlbumRepositoryTest {
     public void loadAlbumsForAuction() throws Exception {
         DataSource dataSource = config.dataSource();
         JdbcAlbumRepository repository = new JdbcAlbumRepository(dataSource, new JdbcCategoryRepository(dataSource), new JdbcLabelRepository(dataSource));
-        List<Album> albums = repository.listForAuction(1);
+        List<Album> albums = repository.listForAuction("1");
         assertEquals(2, albums.size());
     }
 
@@ -43,7 +43,7 @@ public class JdbcAlbumRepositoryTest {
     public void findById() throws Exception {
         DataSource dataSource = config.dataSource();
         JdbcAlbumRepository repository = new JdbcAlbumRepository(dataSource, new JdbcCategoryRepository(dataSource), new JdbcLabelRepository(dataSource));
-        Album album = repository.findById(1);
+        Album album = repository.findById("1");
         assertEquals("Jethro Tull", album.artist());
         assertEquals("Aqualung", album.title());
     }

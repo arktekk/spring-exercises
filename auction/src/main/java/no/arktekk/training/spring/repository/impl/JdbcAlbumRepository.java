@@ -24,17 +24,17 @@ public class JdbcAlbumRepository implements AlbumRepository {
         albumMapper = new AlbumMapper(categoryRepository, labelRepository);
     }
 
-    public Album findById(double id) {
-        return template.queryForObject("select * from Albums WHERE id = 1", albumMapper);
+    public Album findById(String id) {
+        return template.queryForObject("select * from Albums WHERE id = ?", albumMapper, id);
     }
 
-    public List<Album> listForAuction(double auctionId) {
+    public List<Album> listForAuction(String auctionId) {
         return template.query("select * from Albums where auctionId = ?", albumMapper, auctionId);
     }
 
-    public void storeForAuction(Long auctionId, List<Album> albums) {
+    public void storeForAuction(String auctionId, List<Album> albums) {
         for (Album album : albums) {
-            album.assignId();
+            album.assignNewId();
             template.update("insert into Albums values(?,?,?,?,?,?)", album.id(), auctionId, album.title(), album.artist(), album.category().getId(), album.label().getId());
         }
     }

@@ -13,7 +13,7 @@ import java.util.List;
 public interface AuctionRepository {
     List<Auction> listAllRunningAuctions();
 
-    Auction findById(Double auctionId);
+    Auction findById(String auctionId);
 
     @Transactional void newAuction(Auction auction);
 }

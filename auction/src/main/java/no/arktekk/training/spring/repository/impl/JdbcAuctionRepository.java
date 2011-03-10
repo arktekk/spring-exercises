@@ -35,7 +35,7 @@ public class JdbcAuctionRepository implements AuctionRepository {
                 timeStampFormatter.print(now.toDate(), no_NO));
     }
 
-    public Auction findById(Double auctionId) {
+    public Auction findById(String auctionId) {
         return template.queryForObject("select * from Auctions where id = ?", new AuctionMapper(), auctionId);
     }
 

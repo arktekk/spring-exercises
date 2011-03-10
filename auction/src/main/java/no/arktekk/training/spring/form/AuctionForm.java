@@ -17,7 +17,7 @@ import static org.springframework.format.annotation.NumberFormat.Style.NUMBER;
  */
 public class AuctionForm implements Form<Auction> {
 
-    private Long id;
+    private String id;
 
     @NumberFormat(style = NUMBER)
     @NotNull private Double minimumPrice;
@@ -33,11 +33,11 @@ public class AuctionForm implements Form<Auction> {
     private String description;
 
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

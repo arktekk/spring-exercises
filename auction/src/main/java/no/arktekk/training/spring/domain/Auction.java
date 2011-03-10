@@ -3,19 +3,20 @@ package no.arktekk.training.spring.domain;
 import org.joda.time.DateTime;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author <a href="mailto:kaare.nilsen@arktekk.no">Kaare Nilsen</a>
  */
 public class Auction {
-    private Long id;
+    private String id;
     private final Double minimumPrice;
     private final String description;
     private final DateTime starts;
     private final DateTime expires;
     private final List<Album> albums;
 
-    public Auction(Long id, Double minimumPrice, String description, DateTime starts, DateTime expires, List<Album> albums) {
+    public Auction(String id, Double minimumPrice, String description, DateTime starts, DateTime expires, List<Album> albums) {
         this.id = id;
         this.minimumPrice = minimumPrice;
         this.description = description;
@@ -24,7 +25,7 @@ public class Auction {
         this.albums = albums;
     }
 
-    public Long id() {
+    public String id() {
         return id;
     }
 
@@ -48,9 +49,7 @@ public class Auction {
         return albums;
     }
 
-    public void assignId() {
-        if (id == null) {
-            id = System.currentTimeMillis();
-        }
+    public void assignNewId() {
+        id = UUID.randomUUID().toString();
     }
 }

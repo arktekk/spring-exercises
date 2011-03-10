@@ -15,28 +15,19 @@ public class AlbumMapper implements RowMapper<Album> {
     private final JdbcCategoryRepository categoryRepository;
     private final JdbcLabelRepository labelRepository;
 
-    private String prefix = "";
-
     public AlbumMapper(JdbcCategoryRepository categoryRepository, JdbcLabelRepository labelRepository) {
         this.categoryRepository = categoryRepository;
         this.labelRepository = labelRepository;
     }
 
-    public AlbumMapper(String prefix, JdbcCategoryRepository categoryRepository, JdbcLabelRepository labelRepository) {
-        this.prefix = prefix;
-        this.categoryRepository = categoryRepository;
-        this.labelRepository = labelRepository;
-    }
-
-
     @Override
     public Album mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         return new Album(
-                resultSet.getLong(prefix + "id"),
-                resultSet.getString(prefix + "title"),
-                resultSet.getString(prefix + "artist"),
-                categoryRepository.find(resultSet.getInt(prefix + "categoryId")),
-                labelRepository.find(resultSet.getInt(prefix + "labelId"))
+                resultSet.getString("id"),
+                resultSet.getString("title"),
+                resultSet.getString("artist"),
+                categoryRepository.find(resultSet.getInt("categoryId")),
+                labelRepository.find(resultSet.getInt("labelId"))
         );
     }
 }

@@ -28,7 +28,7 @@ public class AuctionServiceImpl implements AuctionService {
         return auctionRepository.listAllRunningAuctions();
     }
 
-    public Auction findById(Double auctionId) {
+    public Auction findById(String auctionId) {
         Auction auction = auctionRepository.findById(auctionId);
         List<Album> albums = albumRepository.listForAuction(auction.id());
         for (Album album : albums) {
@@ -38,10 +38,8 @@ public class AuctionServiceImpl implements AuctionService {
     }
 
     public void newAuction(Auction auction) {
-        auction.assignId();
+        auction.assignNewId();
         auctionRepository.newAuction(auction);
         albumRepository.storeForAuction(auction.id(), auction.albums());
-
-
     }
 }
