@@ -1,0 +1,163 @@
+body {
+    color: #666666;
+}
+
+a {
+    color: #666666;
+    text-decoration: none;
+}
+
+a img {
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border: none;
+}
+
+#container {
+    width: 90%;
+    margin: 10px auto;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    line-height: 130%;
+}
+
+#page-top {
+    background: url("/img/body-top.png") no-repeat scroll left top #F2F2F2;
+    clear: both;
+    height: 6px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: static;
+    width: 1016px;
+    z-index: 10;
+}
+
+#page-header {
+    background: url("/img/body.png") repeat-y scroll left top transparent;
+    height: 150px;
+    margin: 0 auto;
+    padding: 0 5px 15px;
+    position: relative;
+    width: 1006px;
+    z-index: 2;
+}
+
+#page-header img {
+    width: 105px;
+    height: 80px;
+    border: none;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#page-body {
+    background: url("/img/body.png") repeat-y scroll left top transparent;
+    clear: both;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 5px;
+    position: relative;
+    width: 1006px;
+    z-index: 1;
+}
+
+#page-body-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#page-bottom {
+    background: url("/img/page-bottom.png") repeat-x scroll center bottom #5F5E55;
+    padding-right: 10px;
+    text-align: right;
+    clear: both;
+
+}
+
+#page-end {
+    background: url("/img/footer.jpg") no-repeat scroll left top transparent;
+    clear: both;
+    height: 76px;
+    margin: 0 auto;
+    position: static;
+    width: 960px;
+    z-index: 10;
+}
+
+.label {
+    padding-right: 10px;
+}
+
+#page-menu {
+    float: left;
+    padding-right: 100px;
+}
+
+#page-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+#page-menu a :hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    float: left;
+    padding-left: 20px;
+}
+
+table {
+    background-color: #ffffff;
+    width:100%;
+}
+
+table th {
+    text-align: left;
+    background-color: #ffffff;
+    border-bottom: silver;
+}
+
+table .even {
+    background-color: #ffff00;
+}
+
+table .odd {
+    background-color: #ffffff;
+}
+
+table .header {
+    background-repeat: no-repeat;
+    height: auto;
+}
+
+.field, .section {
+    display: block;
+    clear: both;
+}
+
+.field label {
+    width: 100px;
+    float: left;
+}
+
+.field input {
+    width: 100px;
+    float: left;
+}
+
+.submit {
+    float: left;
+}
+
+.details-form {
+    display: none;
+    clear: both;
+    margin-left: 50px;
+}
+
