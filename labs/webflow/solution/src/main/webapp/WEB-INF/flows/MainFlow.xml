@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+<!-- 
+	<var name="conversationScope.numberOfKeys" class="java.lang.Integer" />
+-->
+
+	<view-state id="theRoad" view="/WEB-INF/views/mainflow/theRoad.jsp">
+		<transition on="goNorth" to="theCastle" />
+		<transition on="goEast" to="theTavern" />
+		<transition on="goWest" to="theLibrary" />
+	</view-state>
+
+	<view-state id="theTavern" view="/WEB-INF/views/mainflow/theTavern.jsp">
+		<transition on="goNorth" to="theCastle" />
+		<transition on="goWest" to="theRoad" />
+		<on-exit>
+			<set name="conversationScope.numberOfKeys" 
+				value="1" 
+				type="int" />
+		</on-exit>
+	</view-state>
+
+	<view-state id="theLibrary" view="/WEB-INF/views/mainflow/theLibrary.jsp">
+		<transition on="goNorth" to="theCastle" />
+		<transition on="goEast" to="theRoad" />
+	</view-state>
+
+	<view-state id="theCastle" view="/WEB-INF/views/mainflow/theCastle.jsp">
+		<transition on="goSouth" to="theRoad" />
+		<transition on="enterCastle" to="enterCastle" />
+	</view-state>
+
+	<action-state id="enterCastle">
+		<evaluate expression="conversationScope.numberOfKeys == 1" />
+		<transition on="yes" to="victory" />
+		<transition on="no" to="theCastle" />
+	</action-state>
+
+	<end-state id="victory" view="/WEB-INF/views/mainflow/victory.jsp" />
+
+</flow>
