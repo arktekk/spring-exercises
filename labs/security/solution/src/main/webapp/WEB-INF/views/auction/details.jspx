@@ -1,0 +1,50 @@
+<jsp:root version="2.0"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:layout="urn:jsptagdir:/WEB-INF/tags/layout"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:joda="http://www.joda.org/joda/time/tags" xmlns:spring="http://www.springframework.org/tags" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <!--@elvariable id="auction" type="no.arktekk.training.spring.form.AuctionForm"-->
+    <jsp:directive.page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"/>
+    <layout:page title="auction.details.title">
+        <layout:menu/>
+        <layout:page-body title="auction.details.title">
+            <table>
+                <tr>
+                    <th><spring:message code="auction.new.minimumPrice"/></th>
+                    <th><spring:message code="auction.new.starts"/></th>
+                    <th><spring:message code="auction.new.expires"/></th>
+                    <th><spring:message code="auction.new.description"/></th>
+                </tr>
+                <tr>
+                    <td><fmt:formatNumber currencyCode="NOK" type="Currency" value="${auction.minimumPrice}"/></td>
+                    <td><joda:format value="${auction.startDate}" pattern="dd.MM.yyyy hh:mm"/></td>
+                    <td><joda:format value="${auction.expiresDate}" pattern="dd.MM.yyyy hh:mm"/></td>
+                    <td>${auction.description}</td>
+                </tr>
+            </table>
+
+
+            <h2><spring:message code="album.list"/></h2>
+            <table>
+                <tr>
+                    <th><spring:message code="album.artist"/></th>
+                    <th><spring:message code="album.title"/></th>
+                    <th><spring:message code="album.category"/></th>
+                    <th><spring:message code="album.label"/></th>
+                </tr>
+                <c:forEach var="album" items="${auction.albums}">
+                    <tr>
+                        <td>${album.artist}</td>
+                        <td>${album.title}</td>
+                        <td>${album.category}</td>
+                        <td>${album.label}</td>
+                    </tr>
+                </c:forEach>
+                <tr>
+
+                </tr>
+            </table>
+        </layout:page-body>
+    </layout:page>
+</jsp:root>
