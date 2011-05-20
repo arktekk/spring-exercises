@@ -19,20 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 @Controller
 public class RestAuctionController {
 	
 	private final AuctionService auctionService;
-
-	@Autowired
-	private Jaxb2Marshaller jaxb2Marshaller;
+	private final Jaxb2Marshaller jaxb2Marshaller;
 	
 	@Autowired
-	public RestAuctionController(AuctionService auctionService) {
+	public RestAuctionController(AuctionService auctionService, Jaxb2Marshaller jaxb2Marshaller) {
 		this.auctionService = auctionService;
-	}
+        this.jaxb2Marshaller = jaxb2Marshaller;
+    }
 
-	@RequestMapping(method = RequestMethod.GET, value = "/auctions")
+	@RequestMapping(method = GET, value = "/auctions")
 	public ModelAndView listAuctions() {
 		List<Auction> auctions = auctionService.allRunningAuctions();
 		ModelAndView mav = new ModelAndView("jaxbMarshallerView");
@@ -40,7 +42,7 @@ public class RestAuctionController {
 		return mav;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/auctions/{auctionId}")
+	@RequestMapping(method = GET, value = "/auctions/{auctionId}")
 	public ModelAndView getAuction(@PathVariable String auctionId) {
 		Auction auction = auctionService.findById(auctionId);
 		ModelAndView mav = new ModelAndView("jaxbMarshallerView");
@@ -48,7 +50,7 @@ public class RestAuctionController {
 		return mav;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/auctions")
+	@RequestMapping(method = POST, value = "/auctions")
 	public ModelAndView createAuction(@RequestBody String auctionXml) {
 		
 		Source source = new StreamSource(new StringReader(auctionXml));

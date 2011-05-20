@@ -8,7 +8,7 @@
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>webflow-solution</artifactId>
-	<name>Solution :: WebFlow</name>
+	<name>Demo :: WebFlow</name>
 
 	<dependencies>
 		<!-- Spring Dependencies -->

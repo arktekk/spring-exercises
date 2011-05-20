@@ -28,10 +28,8 @@ import static java.util.Locale.US;
 import static org.junit.Assert.*;
 
 public class RestTest {
-	ApplicationContext applicationCtx = new FileSystemXmlApplicationContext(
-			"/src/main/webapp/WEB-INF/applicationContext.xml");
-	ApplicationContext webappCtx = new FileSystemXmlApplicationContext(
-			new String[] { "/src/main/webapp/WEB-INF/rest-servlet.xml" },
+	ApplicationContext applicationCtx = new FileSystemXmlApplicationContext("/src/main/webapp/WEB-INF/applicationContext.xml");
+	ApplicationContext webappCtx = new FileSystemXmlApplicationContext(new String[] { "/src/main/webapp/WEB-INF/rest-servlet.xml" },
 			applicationCtx);
 	
 	/**
@@ -45,18 +43,12 @@ public class RestTest {
 		assertFalse(applicationCtx.containsBean("restAuctionController"));
 		for (String beanDefinedInWebCtx : webappCtx.getBeanDefinitionNames()) {
 			if (!stdSpringBeanNames(beanDefinedInWebCtx))
-				assertFalse("Found double registered bean : "
-						+ beanDefinedInWebCtx,
-						applicationCtx.containsBean(beanDefinedInWebCtx));
+				assertFalse("Found double registered bean : " + beanDefinedInWebCtx, applicationCtx.containsBean(beanDefinedInWebCtx));
 		}
 		for (String beanDefinedInApplicationCtx : applicationCtx
 				.getBeanDefinitionNames()) {
 			if (!stdSpringBeanNames(beanDefinedInApplicationCtx))
-				assertFalse(
-						"Found double registered bean : "
-								+ beanDefinedInApplicationCtx,
-						webappCtx
-								.containsBeanDefinition(beanDefinedInApplicationCtx));
+				assertFalse("Found double registered bean : " + beanDefinedInApplicationCtx, webappCtx .containsBeanDefinition(beanDefinedInApplicationCtx));
 		}
 	}
 
@@ -80,8 +72,7 @@ public class RestTest {
 	 */
 	@Test
 	public void step_2() {
-		RestAuctionController controller = webappCtx
-				.getBean(RestAuctionController.class);
+		RestAuctionController controller = webappCtx.getBean(RestAuctionController.class);
 		ModelAndView modelAndView = controller.listAuctions();
 		assertEquals("jaxbMarshallerView", modelAndView.getViewName());
 		assertEquals(1, modelAndView.getModel().size());
@@ -95,12 +86,10 @@ public class RestTest {
 	 */
 	@Test
 	public void step_3() {
-		DefaultAnnotationHandlerMapping handlerMapping = webappCtx
-				.getBean(DefaultAnnotationHandlerMapping.class);
+		DefaultAnnotationHandlerMapping handlerMapping = webappCtx.getBean(DefaultAnnotationHandlerMapping.class);
 		Map<String, Object> handlerMap = handlerMapping.getHandlerMap();
 		assertTrue(handlerMap.containsKey("/auctions"));
-		assertEquals(RestAuctionController.class, handlerMap.get("/auctions")
-				.getClass());
+		assertEquals(RestAuctionController.class, handlerMap.get("/auctions").getClass());
 	}
 
 	/**
@@ -126,12 +115,10 @@ public class RestTest {
 	 */
 	@Test
 	public void step_5() {
-		DefaultAnnotationHandlerMapping handlerMapping = webappCtx
-				.getBean(DefaultAnnotationHandlerMapping.class);
+		DefaultAnnotationHandlerMapping handlerMapping = webappCtx.getBean(DefaultAnnotationHandlerMapping.class);
 		Map<String, Object> handlerMap = handlerMapping.getHandlerMap();
 		assertTrue(handlerMap.containsKey("/auctions/{auctionId}"));
-		assertEquals(RestAuctionController.class,
-				handlerMap.get("/auctions/{auctionId}").getClass());
+		assertEquals(RestAuctionController.class,handlerMap.get("/auctions/{auctionId}").getClass());
 	}
 
 	/**
@@ -149,15 +136,14 @@ public class RestTest {
 	 */
 	@Test
 	public void step_7() {
-		RestAuctionController controller = webappCtx
-				.getBean(RestAuctionController.class);
+		RestAuctionController controller = webappCtx.getBean(RestAuctionController.class);
 		AuctionRepository repo = applicationCtx.getBean(AuctionRepository.class);
 		int noOfAuctionBeforeCreate = repo.listAllRunningAuctions().size();
 		
 		String xml = "<auction>" +
 				"<minimumPrice>1200.0</minimumPrice>" +
 				"<description>Mint prog rock albums</description>" +
-				"<expiresDateTime>2011-05-13 12:00:00</expiresDateTime>" +
+				"<expiresDateTime>2020-05-13 12:00:00</expiresDateTime>" +
 				"<startDateTime>2011-04-23 12:00:00</startDateTime>" +
 				"<albums/>" +
 				"</auction>";
@@ -179,8 +165,11 @@ public class RestTest {
 	 * http://localhost:8080/restapi/auctions
 	 * http://localhost:8080/restapi/auctions/1
 	 * 
-	 * In order to test POST-ing (creating auctions) you need to use a ReST client.
-	 * The instructor will assist in installing an appropriate plugin to Chrome if needed.
+     * In order to test POST-ing (creating auctions) you need to use a ReST client.
+     * The instructor will assist in installing an appropriate plugin to Chrome if needed.
+     * A good one for Chrome is RESTConsole
+     * For Firefox Poster works fine
+     * For IE.. well you are on you own :)
 	 * 
 	 * When everything is running nice,
 	 * remove the fail() method call belov :)

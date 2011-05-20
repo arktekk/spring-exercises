@@ -7,3 +7,6 @@ target
 .clover
 .settings
 .eclipse
+.classpath
+.project
+META-INF
