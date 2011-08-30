@@ -32,6 +32,5 @@ public class Timer implements InvocationHandler {
             System.out.println("Metodekall ferdig. Tiden det tok var: " + (end - start) + " ms");
         }
         return result;
-
     }
 }
