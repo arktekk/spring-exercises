@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -79,7 +80,7 @@ public class MvcTest {
      * Configure prefix and suffix for the viewresolver
      */
     @Test public void step_6() throws Exception {
-        UrlBasedViewResolver viewResolver = webappCtx.getBean(UrlBasedViewResolver.class);
+        UrlBasedViewResolver viewResolver = webappCtx.getBean(InternalResourceViewResolver.class);
         JstlView view = (JstlView) viewResolver.resolveViewName("test", US);
         assertEquals("/WEB-INF/views/test.jspx", view.getUrl());
     }
